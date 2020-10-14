@@ -126,9 +126,9 @@ class AudioSettingsButton extends Component<Props, State> {
         return visible ? (
             <AudioSettingsPopup>
                 <ToolboxButtonWithIcon
-                    icon = { IconArrowDown }
-                    iconDisabled = { settingsDisabled }
-                    onIconClick = { onAudioOptionsClick }>
+                    icon={IconArrowDown}
+                    iconDisabled={settingsDisabled}
+                    onIconClick={onAudioOptionsClick}>
                     <AudioMuteButton />
                 </ToolboxButtonWithIcon>
             </AudioSettingsPopup>

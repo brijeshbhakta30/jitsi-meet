@@ -61,6 +61,7 @@ export { default as IconMessage } from './message.svg';
 export { default as IconMeter } from './meter.svg';
 export { default as IconMicDisabled } from './mic-disabled.svg';
 export { default as IconMicrophone } from './microphone.svg';
+export { default as IconMicrophoneLektur } from './microphone-lektur.svg';
 export { default as IconMicrophoneEmpty } from './microphone-empty.svg';
 export { default as IconModerator } from './star.svg';
 export { default as IconMuteEveryone } from './mute-everyone.svg';
