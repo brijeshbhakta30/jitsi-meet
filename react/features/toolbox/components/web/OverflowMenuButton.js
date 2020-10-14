@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 
 import { createToolbarEvent, sendAnalytics } from '../../../analytics';
 import { translate } from '../../../base/i18n';
-import { IconMenuThumb } from '../../../base/icons';
+import { IconMenuThumbLektur as IconMenuThumb } from '../../../base/icons';
 
 import ToolbarButton from './ToolbarButton';
 
@@ -66,19 +66,19 @@ class OverflowMenuButton extends Component<Props> {
         const { children, isOpen, t } = this.props;
 
         return (
-            <div className = 'toolbox-button-wth-dialog'>
+            <div className='toolbox-button-wth-dialog'>
                 <InlineDialog
-                    content = { children }
-                    isOpen = { isOpen }
-                    onClose = { this._onCloseDialog }
-                    position = { 'top right' }>
+                    content={children}
+                    isOpen={isOpen}
+                    onClose={this._onCloseDialog}
+                    position={'top right'}>
                     <ToolbarButton
-                        accessibilityLabel =
-                            { t('toolbar.accessibilityLabel.moreActions') }
-                        icon = { IconMenuThumb }
-                        onClick = { this._onToggleDialogVisibility }
-                        toggled = { isOpen }
-                        tooltip = { t('toolbar.moreActions') } />
+                        accessibilityLabel=
+                        {t('toolbar.accessibilityLabel.moreActions')}
+                        icon={IconMenuThumb}
+                        onClick={this._onToggleDialogVisibility}
+                        toggled={isOpen}
+                        tooltip={t('toolbar.moreActions')} />
                 </InlineDialog>
             </div>
         );

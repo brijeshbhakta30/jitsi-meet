@@ -5,6 +5,7 @@ import React from 'react';
 
 import VideoLayout from '../../../../../modules/UI/videolayout/VideoLayout';
 import { getConferenceNameForTitle } from '../../../base/conference';
+import interfaceConfig from '../../../base/config/interfaceConfig';
 import { connect, disconnect } from '../../../base/connection';
 import { translate } from '../../../base/i18n';
 import { IconInviteMoreLektur as IconInviteMore } from '../../../base/icons';
@@ -31,7 +32,6 @@ import { default as Notice } from './Notice';
 
 declare var APP: Object;
 declare var config: Object;
-declare var interfaceConfig: Object;
 
 /**
  * DOM events for when full screen mode has changed. Different browsers need

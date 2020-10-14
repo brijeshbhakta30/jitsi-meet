@@ -2,25 +2,24 @@
 
 import React, { Component } from 'react';
 
+import interfaceConfig from '../../base/config/interfaceConfig';
 import { Watermarks } from '../../base/react';
 import { connect } from '../../base/redux';
 import { InviteMore, Subject } from '../../conference';
 import { fetchCustomBrandingData } from '../../dynamic-branding';
 import { Captions } from '../../subtitles/';
 
-declare var interfaceConfig: Object;
-
 type Props = {
 
     /**
      * The user selected background color.
      */
-     _customBackgroundColor: string,
+    _customBackgroundColor: string,
 
     /**
      * The user selected background image url.
      */
-     _customBackgroundImageUrl: string,
+    _customBackgroundImageUrl: string,
 
     /**
      * Fetches the branding data.
@@ -67,26 +66,26 @@ class LargeVideo extends Component<Props> {
 
         return (
             <div
-                className = { className }
-                id = 'largeVideoContainer'
-                style = { style }>
+                className={className}
+                id='largeVideoContainer'
+                style={style}>
                 <Subject />
                 <InviteMore />
-                <div id = 'sharedVideo'>
-                    <div id = 'sharedVideoIFrame' />
+                <div id='sharedVideo'>
+                    <div id='sharedVideoIFrame' />
                 </div>
-                <div id = 'etherpad' />
+                <div id='etherpad' />
 
                 <Watermarks />
 
-                <div id = 'dominantSpeaker'>
-                    <div className = 'dynamic-shadow' />
-                    <div id = 'dominantSpeakerAvatarContainer' />
+                <div id='dominantSpeaker'>
+                    <div className='dynamic-shadow' />
+                    <div id='dominantSpeakerAvatarContainer' />
                 </div>
-                <div id = 'remotePresenceMessage' />
-                <span id = 'remoteConnectionMessage' />
-                <div id = 'largeVideoElementsContainer'>
-                    <div id = 'largeVideoBackgroundContainer' />
+                <div id='remotePresenceMessage' />
+                <span id='remoteConnectionMessage' />
+                <div id='largeVideoElementsContainer'>
+                    <div id='largeVideoBackgroundContainer' />
 
                     {/*
                       * FIXME: the architecture of elements related to the large
@@ -96,16 +95,16 @@ class LargeVideo extends Component<Props> {
                       * another container for the background and the
                       * largeVideoWrapper in order to hide/show them.
                       */}
-                    <div id = 'largeVideoWrapper'>
+                    <div id='largeVideoWrapper'>
                         <video
-                            autoPlay = { !this.props._noAutoPlayVideo }
-                            id = 'largeVideo'
-                            muted = { true }
-                            playsInline = { true } /* for Safari on iOS to work */ />
+                            autoPlay={!this.props._noAutoPlayVideo}
+                            id='largeVideo'
+                            muted={true}
+                            playsInline={true} /* for Safari on iOS to work */ />
                     </div>
                 </div>
                 { interfaceConfig.DISABLE_TRANSCRIPTION_SUBTITLES
-                    || <Captions /> }
+                    || <Captions />}
             </div>
         );
     }
