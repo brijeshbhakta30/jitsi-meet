@@ -55,5 +55,11 @@ export default [
     'VERTICAL_FILMSTRIP',
     'VIDEO_LAYOUT_FIT',
     'VIDEO_QUALITY_LABEL_DISABLED',
-    'filmStripOnly'
+    'filmStripOnly',
+    'APP_NAME',
+    'DEFAULT_LOGO_URL',
+    'DEFAULT_WELCOME_PAGE_LOGO_URL',
+    'JITSI_WATERMARK_LINK',
+    'LIVE_STREAMING_HELP_LINK',
+    'SUPPORT_URL'
 ];
