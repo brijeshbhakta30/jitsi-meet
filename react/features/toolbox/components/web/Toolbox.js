@@ -1319,7 +1319,6 @@ class Toolbox extends Component<Props, State> {
                             <ToolbarButton
                                 accessibilityLabel={t('toolbar.accessibilityLabel.chat')}
                                 icon={IconChat}
-                                size={56}
                                 onClick={this._onToolbarToggleChat}
                                 toggled={_chatOpen}
                                 tooltip={t('toolbar.chat')} />

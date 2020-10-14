@@ -208,7 +208,6 @@ class Conference extends AbstractConference<Props, *> {
                             accessibilityLabel=
                             {t('toolbar.accessibilityLabel.invite')}
                             icon={IconInviteMore}
-                            size={56}
                             className={className + ' invite-icon-header'}
                             onClick={this._onToolbarOpenInvite}
                             tooltip={t('toolbar.invite')} />
