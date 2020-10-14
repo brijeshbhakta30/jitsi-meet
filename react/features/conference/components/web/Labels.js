@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+import interfaceConfig from '../../../base/config/interfaceConfig';
 import { JitsiRecordingConstants } from '../../../base/lib-jitsi-meet';
 import { connect } from '../../../base/redux';
 import AbstractLabels, {
@@ -9,7 +10,6 @@ import AbstractLabels, {
     type Props
 } from '../AbstractLabels';
 
-declare var interfaceConfig: Object;
 
 /**
  * The type of the React {@code Component} state of {@link Labels}.
@@ -69,12 +69,10 @@ class Labels extends AbstractLabels<Props, State> {
         const { _filmstripVisible } = this.props;
         const { filmstripBecomingVisible } = this.state;
         const { VIDEO_QUALITY_LABEL_DISABLED } = interfaceConfig;
-        const className = `large-video-labels ${
-            filmstripBecomingVisible ? 'opening' : ''} ${
-            _filmstripVisible ? 'with-filmstrip' : 'without-filmstrip'}`;
+        const className = `large-video-labels ${filmstripBecomingVisible ? 'opening' : ''} ${_filmstripVisible ? 'with-filmstrip' : 'without-filmstrip'}`;
 
         return (
-            <div className = { className } >
+            <div className={className} >
                 {
                     this._renderE2EELabel()
                 }
@@ -94,10 +92,13 @@ class Labels extends AbstractLabels<Props, State> {
                 }
                 {
                     this.props._showVideoQualityLabel && !VIDEO_QUALITY_LABEL_DISABLED
-                        && this._renderVideoQualityLabel()
+                    && this._renderVideoQualityLabel()
                 }
                 {
                     this._renderInsecureRoomNameLabel()
+                }
+                {
+                    this.props.renderInvite ? this.props.renderInvite(className) : null
                 }
             </div>
         );
@@ -109,11 +110,11 @@ class Labels extends AbstractLabels<Props, State> {
 
     _renderRecordingLabel: string => React$Element<*>;
 
-    _renderTranscribingLabel: () => React$Element<*>;
+_renderTranscribingLabel: () => React$Element<*>;
 
-    _renderInsecureRoomNameLabel: () => React$Element<any>;
+_renderInsecureRoomNameLabel: () => React$Element<any>;
 
-    _renderVideoQualityLabel: () => React$Element<*>;
+_renderVideoQualityLabel: () => React$Element<*>;
 }
 
 export default connect(_mapStateToProps)(Labels);

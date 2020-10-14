@@ -26,7 +26,9 @@ export type Props = {
     /**
      * Whether the video quality label should be displayed.
      */
-    _showVideoQualityLabel: boolean
+    _showVideoQualityLabel: boolean1,
+
+    renderInvite?: Function,
 };
 
 /**
@@ -70,7 +72,7 @@ export default class AbstractLabels<P: Props, S> extends Component<P, S> {
      */
     _renderRecordingLabel(mode: string) {
         return (
-            <RecordingLabel mode = { mode } />
+            <RecordingLabel mode={mode} />
         );
     }
 

@@ -7,15 +7,17 @@ import VideoLayout from '../../../../../modules/UI/videolayout/VideoLayout';
 import { getConferenceNameForTitle } from '../../../base/conference';
 import { connect, disconnect } from '../../../base/connection';
 import { translate } from '../../../base/i18n';
+import { IconInviteMoreLektur as IconInviteMore } from '../../../base/icons';
 import { connect as reactReduxConnect } from '../../../base/redux';
 import { Chat } from '../../../chat';
 import { Filmstrip } from '../../../filmstrip';
-import { CalleeInfoContainer } from '../../../invite';
+import { beginAddPeople, CalleeInfoContainer } from '../../../invite';
 import { LargeVideo } from '../../../large-video';
 import { KnockingParticipantList, LobbyScreen } from '../../../lobby';
 import { Prejoin, isPrejoinPageVisible } from '../../../prejoin';
 import { fullScreenChanged, setToolboxAlwaysVisible, showToolbox } from '../../../toolbox/actions.web';
 import { Toolbox } from '../../../toolbox/components/web';
+import ToolbarButton from '../../../toolbox/components/web/ToolbarButton';
 import { LAYOUTS, getCurrentLayout } from '../../../video-layout';
 import { maybeShowSuboptimalExperienceNotification } from '../../functions';
 import {
@@ -122,6 +124,7 @@ class Conference extends AbstractConference<Props, *> {
 
         // Bind event handler so it is only bound once for every instance.
         this._onFullScreenChange = this._onFullScreenChange.bind(this);
+        this._onToolbarOpenInvite = this._onToolbarOpenInvite.bind(this);
     }
 
     /**
@@ -184,28 +187,38 @@ class Conference extends AbstractConference<Props, *> {
             _iAmRecorder,
             _isLobbyScreenVisible,
             _layoutClassName,
-            _showPrejoin
+            _showPrejoin,
+            t,
         } = this.props;
         const hideLabels = filmstripOnly || _iAmRecorder;
 
         return (
             <div
-                className = { _layoutClassName }
-                id = 'videoconference_page'
-                onMouseMove = { this._onShowToolbar }>
+                className={_layoutClassName}
+                id='videoconference_page'
+                onMouseMove={this._onShowToolbar}>
 
                 <Notice />
-                <div id = 'videospace'>
+                <div id='videospace'>
                     <LargeVideo />
                     <KnockingParticipantList />
-                    <Filmstrip filmstripOnly = { filmstripOnly } />
-                    { hideLabels || <Labels /> }
+                    <Filmstrip filmstripOnly={filmstripOnly} />
+                    {hideLabels || <Labels renderInvite={
+                        (className) => <ToolbarButton
+                            accessibilityLabel=
+                            {t('toolbar.accessibilityLabel.invite')}
+                            icon={IconInviteMore}
+                            size={56}
+                            className={className + ' invite-icon-header'}
+                            onClick={this._onToolbarOpenInvite}
+                            tooltip={t('toolbar.invite')} />
+                    } />}
                 </div>
 
-                { filmstripOnly || _showPrejoin || _isLobbyScreenVisible || <Toolbox /> }
-                { filmstripOnly || <Chat /> }
+                { filmstripOnly || _showPrejoin || _isLobbyScreenVisible || <Toolbox />}
+                { filmstripOnly || <Chat />}
 
-                { this.renderNotificationsContainer() }
+                { this.renderNotificationsContainer()}
 
                 <CalleeInfoContainer />
 
@@ -223,6 +236,17 @@ class Conference extends AbstractConference<Props, *> {
      */
     _onFullScreenChange() {
         this.props.dispatch(fullScreenChanged(APP.UI.isFullScreen()));
+    }
+
+    /**
+     * Creates an analytics toolbar event and dispatches an action for opening
+     * the modal for inviting people directly into the conference.
+     *
+     * @private
+     * @returns {void}
+     */
+    _onToolbarOpenInvite() {
+        this.props.dispatch(beginAddPeople());
     }
 
     /**
