@@ -7,11 +7,11 @@
             cursor: pointer;
             display: flex;
             background-color: #fff;
-            border-radius: 50%;
+            border-radius: 10px;
             border: 1px solid #d1dbe8;
             justify-content: center;
-            width: 38px;
-            height: 38px;
+            width: 56px;
+            height: 56px;
 
             &:hover {
                 background-color: #daebfa;
@@ -31,7 +31,8 @@
                 }
             }
 
-            &.disabled, .disabled & {
+            &.disabled,
+            .disabled & {
                 cursor: initial;
                 color: #fff;
                 background-color: #a4b8d1;
@@ -48,7 +49,7 @@
     }
 
     &-small-icon {
-        background: #FFF;
+        background: #fff;
         border: 1px solid rgba(0, 0, 0, 0.2);
         border-radius: 50%;
         bottom: 0;
@@ -60,7 +61,7 @@
         right: 4px;
         width: 16px;
 
-        &> svg {
+        & > svg {
             fill: #5e6d7a;
             margin-top: 5px;
         }
@@ -76,7 +77,7 @@
             right: 2px;
             width: 20px;
 
-            &> svg {
+            & > svg {
                 margin-top: 6px;
             }
         }

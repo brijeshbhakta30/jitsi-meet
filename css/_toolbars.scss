@@ -27,9 +27,8 @@
     left: 0;
     position: absolute;
     right: 0;
-    transition: bottom .3s ease-in;
+    transition: bottom 0.3s ease-in;
     width: 100%;
-
 
     &.visible {
         bottom: 0;
@@ -49,7 +48,7 @@
 
     .toolbox-background {
         background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
-        transition: bottom .3s ease-in;
+        transition: bottom 0.3s ease-in;
         height: 160px;
         width: 100%;
         bottom: -160px;
@@ -80,39 +79,40 @@
             justify-content: center;
 
             .toolbox-button {
-
                 .toolbox-icon {
-                    background-color: #fff;
-                    border-radius: 50%;
-                    border: 1px solid #d1dbe8;
                     margin: 0px 4px;
-                    width: 38px;
-                    height: 38px;
-        
+                    background-color: #fff;
+                    border-radius: 10px;
+                    border: 1px solid #d1dbe8;
+                    justify-content: center;
+                    width: 56px;
+                    height: 56px;
+
                     &:hover {
                         background-color: #daebfa;
                         border: 1px solid #daebfa;
                     }
-        
+
                     &.toggled {
                         background: #2a3a4b;
                         border: 1px solid #5e6d7a;
-    
+
                         svg {
                             fill: #fff;
                         }
-        
+
                         &:hover {
                             background-color: #5e6d7a;
                         }
                     }
-        
-                    &.disabled, .disabled & {
+
+                    &.disabled,
+                    .disabled & {
                         cursor: initial;
                         color: #fff;
                         background-color: #a4b8d1;
                     }
-    
+
                     svg {
                         fill: #5e6d7a;
                     }
@@ -122,9 +122,9 @@
                     .toolbox-icon {
                         background-color: $hangupColor;
                         border: 1px solid $hangupColor;
-                        width: 40px;
-                        height: 40px;
-                
+                        width: 56px;
+                        height: 56px;
+
                         &:hover {
                             background-color: $hangupColor;
                         }
@@ -211,7 +211,7 @@
                 }
 
                 svg {
-                    fill: #B8C7E0 !important;
+                    fill: #b8c7e0 !important;
                 }
             }
 
@@ -255,14 +255,31 @@
             border-radius: 5px;
             flex-direction: column;
             font-size: 24px;
-            height: $newToolbarSize;
+            background-color: #fff;
+            border-radius: 10px;
+            border: 1px solid #d1dbe8;
             justify-content: center;
-            width: $newToolbarSize;
+            width: 56px;
+            height: 56px;
 
-            &:hover, &.toggled {
-                background: $newToolbarButtonHoverColor;
+            &:hover {
+                background-color: #daebfa;
+                border: 1px solid #daebfa;
             }
-    
+
+            &.toggled {
+                background: #2a3a4b;
+                border: 1px solid #5e6d7a;
+
+                svg {
+                    fill: #fff;
+                }
+
+                &:hover {
+                    background-color: #5e6d7a;
+                }
+            }
+
             &.disabled {
                 cursor: initial !important;
                 background-color: #a4b8d1 !important;
@@ -281,11 +298,11 @@
 .fadeIn {
     opacity: 1;
 
-    @include transition(all .3s ease-in);
+    @include transition(all 0.3s ease-in);
 }
 
 .fadeOut {
     opacity: 0;
 
-    @include transition(all .3s ease-out);
+    @include transition(all 0.3s ease-out);
 }

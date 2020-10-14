@@ -6,21 +6,23 @@
 
     .new-toolbox {
         .toolbox-content {
-            .button-group-center, .button-group-left, .button-group-right {
+            .button-group-center,
+            .button-group-left,
+            .button-group-right {
                 .toolbox-button {
                     .toolbox-icon {
-                        width: 28px;
-                        height: 28px;
+                        width: 56px;
+                        height: 56px;
                         svg {
-                            width: 18px;
-                            height: 18px;
+                            width: 56px;
+                            height: 56px;
                         }
                     }
 
                     &:nth-child(2) {
                         .toolbox-icon {
-                            width: 30px;
-                            height: 30px;
+                            width: 56px;
+                            height: 56px;
                         }
                     }
                 }
@@ -40,24 +42,26 @@
     }
     .new-toolbox {
         .toolbox-content {
-            .button-group-center, .button-group-left, .button-group-right {
+            .button-group-center,
+            .button-group-left,
+            .button-group-right {
                 .settings-button-small-icon {
                     display: none;
                 }
                 .toolbox-button {
                     .toolbox-icon {
-                        width: 18px;
-                        height: 18px;
+                        width: 56px;
+                        height: 56px;
                         svg {
-                            width: 12px;
-                            height: 12px;
+                            width: 56px;
+                            height: 56px;
                         }
                     }
 
                     &:nth-child(2) {
                         .toolbox-icon {
-                            width: 20px;
-                            height: 20px;
+                            width: 56px;
+                            height: 56px;
                         }
                     }
                 }

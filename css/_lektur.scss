@@ -1,4 +1,42 @@
 .invite-icon-header {
     right: 50px !important;
     top: 0px;
+    font-size: 24px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #d1dbe8;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+
+    &:hover {
+        background-color: #daebfa;
+        border: 1px solid #daebfa;
+    }
+
+    &.toggled {
+        background: #2a3a4b;
+        border: 1px solid #5e6d7a;
+
+        svg {
+            fill: #fff;
+        }
+
+        &:hover {
+            background-color: #5e6d7a;
+        }
+    }
+
+    &.disabled {
+        cursor: initial !important;
+        background-color: #a4b8d1 !important;
+
+        svg {
+            fill: #fff !important;
+        }
+    }
+    .jitsi-icon {
+        display: flex;
+        align-items: center;
+    }
 }
