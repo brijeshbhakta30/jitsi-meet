@@ -191,6 +191,7 @@ export default class SmallVideo {
      */
     bindHoverHandler() {
         // Add hover handler
+        // Note: ignoring hover listener on small video
         this.$container.hover(
             () => {
                 this.videoIsHovered = true;
@@ -279,13 +280,13 @@ export default class SmallVideo {
         }
 
         ReactDOM.render(
-            <Provider store = { APP.store }>
-                <I18nextProvider i18n = { i18next }>
+            <Provider store={APP.store}>
+                <I18nextProvider i18n={i18next}>
                     <StatusIndicators
-                        showAudioMutedIndicator = { this.isAudioMuted }
-                        showScreenShareIndicator = { this.isScreenSharing }
-                        showVideoMutedIndicator = { this.isVideoMuted }
-                        participantID = { this.id } />
+                        showAudioMutedIndicator={this.isAudioMuted}
+                        showScreenShareIndicator={this.isScreenSharing}
+                        showVideoMutedIndicator={this.isVideoMuted}
+                        participantID={this.id} />
                 </I18nextProvider>
             </Provider>,
             statusBarContainer);
@@ -332,7 +333,7 @@ export default class SmallVideo {
         const audioLevelContainer = this._getAudioLevelContainer();
 
         if (audioLevelContainer) {
-            ReactDOM.render(<AudioLevelIndicator audioLevel = { lvl }/>, audioLevelContainer);
+            ReactDOM.render(<AudioLevelIndicator audioLevel={lvl} />, audioLevelContainer);
         }
     }
 
@@ -393,9 +394,9 @@ export default class SmallVideo {
 
         if (displayNameContainer) {
             ReactDOM.render(
-                <Provider store = { APP.store }>
-                    <I18nextProvider i18n = { i18next }>
-                        <DisplayName { ...props } />
+                <Provider store={APP.store}>
+                    <I18nextProvider i18n={i18next}>
+                        <DisplayName {...props} />
                     </I18nextProvider>
                 </Provider>,
                 displayNameContainer);
@@ -532,27 +533,27 @@ export default class SmallVideo {
         this.displayMode = this.selectDisplayMode(displayModeInput);
 
         switch (this.displayMode) {
-        case DISPLAY_AVATAR_WITH_NAME:
-            displayModeString = 'avatar-with-name';
-            this.$container.addClass('display-avatar-with-name');
-            break;
-        case DISPLAY_BLACKNESS_WITH_NAME:
-            displayModeString = 'blackness-with-name';
-            this.$container.addClass('display-name-on-black');
-            break;
-        case DISPLAY_VIDEO:
-            displayModeString = 'video';
-            this.$container.addClass('display-video');
-            break;
-        case DISPLAY_VIDEO_WITH_NAME:
-            displayModeString = 'video-with-name';
-            this.$container.addClass('display-name-on-video');
-            break;
-        case DISPLAY_AVATAR:
-        default:
-            displayModeString = 'avatar';
-            this.$container.addClass('display-avatar-only');
-            break;
+            case DISPLAY_AVATAR_WITH_NAME:
+                displayModeString = 'avatar-with-name';
+                this.$container.addClass('display-avatar-with-name');
+                break;
+            case DISPLAY_BLACKNESS_WITH_NAME:
+                displayModeString = 'blackness-with-name';
+                this.$container.addClass('display-name-on-black');
+                break;
+            case DISPLAY_VIDEO:
+                displayModeString = 'video';
+                this.$container.addClass('display-video');
+                break;
+            case DISPLAY_VIDEO_WITH_NAME:
+                displayModeString = 'video-with-name';
+                this.$container.addClass('display-name-on-video');
+                break;
+            case DISPLAY_AVATAR:
+            default:
+                displayModeString = 'avatar';
+                this.$container.addClass('display-avatar-only');
+                break;
         }
 
         if (this.displayMode !== oldDisplayMode) {
@@ -573,10 +574,10 @@ export default class SmallVideo {
             // Maybe add a special case for local participant, as on init of
             // LocalVideo.js the id is set to "local" but will get updated later.
             ReactDOM.render(
-                <Provider store = { APP.store }>
+                <Provider store={APP.store}>
                     <AvatarDisplay
-                        className = 'userAvatar'
-                        participantId = { this.id } />
+                        className='userAvatar'
+                        participantId={this.id} />
                 </Provider>,
                 thumbnail
             );
@@ -629,8 +630,7 @@ export default class SmallVideo {
      */
     showRaisedHandIndicator(show) {
         if (!this.container) {
-            logger.warn(`Unable to raised hand indication - ${
-                this.videoSpanId} does not exist`);
+            logger.warn(`Unable to raised hand indication - ${this.videoSpanId} does not exist`);
 
             return;
         }
@@ -655,7 +655,7 @@ export default class SmallVideo {
         const userAgent = window.navigator.userAgent;
 
         if (userAgent.indexOf('QtWebEngine') > -1
-                && (userAgent.indexOf('Windows') > -1 || userAgent.indexOf('Linux') > -1)) {
+            && (userAgent.indexOf('Windows') > -1 || userAgent.indexOf('Linux') > -1)) {
             this.$container.css('overflow', 'hidden');
         }
     }
@@ -708,8 +708,9 @@ export default class SmallVideo {
      * @returns {void}
      */
     updateIndicators() {
+        // Note we do not want to show the toolbar on video
+        return;
         const indicatorToolbar = this.container.querySelector('.videocontainer__toptoolbar');
-
         if (!indicatorToolbar) {
             return;
         }
@@ -734,29 +735,29 @@ export default class SmallVideo {
         }
 
         ReactDOM.render(
-            <Provider store = { APP.store }>
-                <I18nextProvider i18n = { i18next }>
+            <Provider store={APP.store}>
+                <I18nextProvider i18n={i18next}>
                     <div>
-                        <AtlasKitThemeProvider mode = 'dark'>
-                            { this._showConnectionIndicator
+                        <AtlasKitThemeProvider mode='light'>
+                            {this._showConnectionIndicator
                                 ? <ConnectionIndicator
-                                    alwaysVisible = { showConnectionIndicator }
-                                    connectionStatus = { this._connectionStatus }
-                                    iconSize = { iconSize }
-                                    isLocalVideo = { this.isLocal }
-                                    enableStatsDisplay = { !interfaceConfig.filmStripOnly }
-                                    participantId = { this.id }
-                                    statsPopoverPosition = { statsPopoverPosition } />
-                                : null }
+                                    alwaysVisible={showConnectionIndicator}
+                                    connectionStatus={this._connectionStatus}
+                                    iconSize={iconSize}
+                                    isLocalVideo={this.isLocal}
+                                    enableStatsDisplay={!interfaceConfig.filmStripOnly}
+                                    participantId={this.id}
+                                    statsPopoverPosition={statsPopoverPosition} />
+                                : null}
                             <RaisedHandIndicator
-                                iconSize = { iconSize }
-                                participantId = { this.id }
-                                tooltipPosition = { tooltipPosition } />
-                            { this._showDominantSpeaker && participantCount > 2
+                                iconSize={iconSize}
+                                participantId={this.id}
+                                tooltipPosition={tooltipPosition} />
+                            {this._showDominantSpeaker && participantCount > 2
                                 ? <DominantSpeakerIndicator
-                                    iconSize = { iconSize }
-                                    tooltipPosition = { tooltipPosition } />
-                                : null }
+                                    iconSize={iconSize}
+                                    tooltipPosition={tooltipPosition} />
+                                : null}
                         </AtlasKitThemeProvider>
                     </div>
                 </I18nextProvider>
@@ -855,60 +856,60 @@ export default class SmallVideo {
     _setThumbnailSize() {
         const layout = getCurrentLayout(APP.store.getState());
         const heightToWidthPercent = 100
-                / (this.isLocal ? interfaceConfig.LOCAL_THUMBNAIL_RATIO : interfaceConfig.REMOTE_THUMBNAIL_RATIO);
+            / (this.isLocal ? interfaceConfig.LOCAL_THUMBNAIL_RATIO : interfaceConfig.REMOTE_THUMBNAIL_RATIO);
 
         switch (layout) {
-        case LAYOUTS.VERTICAL_FILMSTRIP_VIEW: {
-            this.$container.css('padding-top', `${heightToWidthPercent}%`);
-            this.$avatar().css({
-                height: '50%',
-                width: `${heightToWidthPercent / 2}%`
-            });
-            break;
-        }
-        case LAYOUTS.HORIZONTAL_FILMSTRIP_VIEW: {
-            const state = APP.store.getState();
-            const { local, remote } = state['features/filmstrip'].horizontalViewDimensions;
-            const size = this.isLocal ? local : remote;
-
-            if (typeof size !== 'undefined') {
-                const { height, width } = size;
-                const avatarSize = height / 2;
-
-                this.$container.css({
-                    height: `${height}px`,
-                    'min-height': `${height}px`,
-                    'min-width': `${width}px`,
-                    width: `${width}px`
-                });
+            case LAYOUTS.VERTICAL_FILMSTRIP_VIEW: {
+                this.$container.css('padding-top', `${heightToWidthPercent}%`);
                 this.$avatar().css({
-                    height: `${avatarSize}px`,
-                    width: `${avatarSize}px`
+                    height: '50%',
+                    width: `${heightToWidthPercent / 2}%`
                 });
+                break;
             }
-            break;
-        }
-        case LAYOUTS.TILE_VIEW: {
-            const state = APP.store.getState();
-            const { thumbnailSize } = state['features/filmstrip'].tileViewDimensions;
+            case LAYOUTS.HORIZONTAL_FILMSTRIP_VIEW: {
+                const state = APP.store.getState();
+                const { local, remote } = state['features/filmstrip'].horizontalViewDimensions;
+                const size = this.isLocal ? local : remote;
 
-            if (typeof thumbnailSize !== 'undefined') {
-                const { height, width } = thumbnailSize;
-                const avatarSize = height / 2;
+                if (typeof size !== 'undefined') {
+                    const { height, width } = size;
+                    const avatarSize = height / 2;
 
-                this.$container.css({
-                    height: `${height}px`,
-                    'min-height': `${height}px`,
-                    'min-width': `${width}px`,
-                    width: `${width}px`
-                });
-                this.$avatar().css({
-                    height: `${avatarSize}px`,
-                    width: `${avatarSize}px`
-                });
+                    this.$container.css({
+                        height: `${height}px`,
+                        'min-height': `${height}px`,
+                        'min-width': `${width}px`,
+                        width: `${width}px`
+                    });
+                    this.$avatar().css({
+                        height: `${avatarSize}px`,
+                        width: `${avatarSize}px`
+                    });
+                }
+                break;
             }
-            break;
-        }
+            case LAYOUTS.TILE_VIEW: {
+                const state = APP.store.getState();
+                const { thumbnailSize } = state['features/filmstrip'].tileViewDimensions;
+
+                if (typeof thumbnailSize !== 'undefined') {
+                    const { height, width } = thumbnailSize;
+                    const avatarSize = height / 2;
+
+                    this.$container.css({
+                        height: `${height}px`,
+                        'min-height': `${height}px`,
+                        'min-width': `${width}px`,
+                        width: `${width}px`
+                    });
+                    this.$avatar().css({
+                        height: `${avatarSize}px`,
+                        width: `${avatarSize}px`
+                    });
+                }
+                break;
+            }
         }
     }
 }
