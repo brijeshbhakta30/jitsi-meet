@@ -133,6 +133,11 @@ type Props = {
     _tileViewEnabled: boolean,
 
     /**
+     * Get participants list.
+     */
+    _participants: any,
+
+    /**
      * Whether or not the current user is logged in through a JWT.
      */
     _isGuest: boolean,
@@ -336,6 +341,10 @@ class Toolbox extends Component<Props, State> {
 
         if (this.props._chatOpen !== prevProps._chatOpen) {
             this._onResize();
+        }
+
+        if (this.props._participants?.length > 1 && !this.props._tileViewEnabled) {
+            this._doToggleTileView();
         }
     }
 
@@ -1253,6 +1262,8 @@ class Toolbox extends Component<Props, State> {
         if (this._shouldShowButton('desktop')
             && this._isDesktopSharingButtonVisible()) {
             // NOTE: disabling buttons as per requirements
+            // TODO: Enable disable sharing options from here
+            // TODO: Get the icon for this button
             // buttonsLeft.push('desktop');
         }
         if (this._shouldShowButton('raisehand')) {
@@ -1437,8 +1448,9 @@ function _mapStateToProps(state) {
     // NB: We compute the buttons again here because if URL parameters were used to
     // override them we'd miss it.
     const buttons = new Set(interfaceConfig.TOOLBAR_BUTTONS);
-
+    const participants = getParticipants(state);
     return {
+        _participants: participants,
         _chatOpen: state['features/chat'].isOpen,
         _conference: conference,
         _desktopSharingEnabled: desktopSharingEnabled,
