@@ -15,12 +15,12 @@
     }
 
     &.toggled {
-        background: #daebfa;
+        background: #d0d0d0;
         svg {
             fill: $svgColor;
         }
         &:hover {
-            background-color: #5e6d7a;
+            background-color: #93979a;
         }
     }
 

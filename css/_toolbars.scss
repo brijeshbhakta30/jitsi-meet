@@ -94,15 +94,12 @@
                     }
 
                     &.toggled {
-                        background: #2a3a4b;
-                        border: 1px solid #5e6d7a;
-
+                        background: #d0d0d0;
                         svg {
-                            fill: #fff;
+                            fill: $svgColor;
                         }
-
                         &:hover {
-                            background-color: #5e6d7a;
+                            background-color: #93979a;
                         }
                     }
 
@@ -268,15 +265,12 @@
             }
 
             &.toggled {
-                background: #2a3a4b;
-                border: 1px solid #5e6d7a;
-
+                background: #d0d0d0;
                 svg {
-                    fill: #fff;
+                    fill: $svgColor;
                 }
-
                 &:hover {
-                    background-color: #5e6d7a;
+                    background-color: #93979a;
                 }
             }
 
