@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 
-import { IconCameraDisabled } from '../../../base/icons';
+import { IconCameraDisabledLektur as IconCameraDisabled } from '../../../base/icons';
 import { BaseIndicator } from '../../../base/react';
 
 /**
@@ -30,12 +30,12 @@ class VideoMutedIndicator extends Component<Props> {
     render() {
         return (
             <BaseIndicator
-                className = 'videoMuted toolbar-icon'
-                icon = { IconCameraDisabled }
-                iconId = 'camera-disabled'
-                iconSize = { 13 }
-                tooltipKey = 'videothumbnail.videomute'
-                tooltipPosition = { this.props.tooltipPosition } />
+                className='videoMuted toolbar-icon'
+                icon={IconCameraDisabled}
+                iconId='camera-disabled'
+                iconSize={13}
+                tooltipKey='videothumbnail.videomute'
+                tooltipPosition={this.props.tooltipPosition} />
         );
     }
 }

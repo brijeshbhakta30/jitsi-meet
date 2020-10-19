@@ -1,6 +1,6 @@
 // @flow
 
-import { IconCameraLektur as IconCamera, IconCameraDisabled } from '../../icons';
+import { IconCameraLektur as IconCamera, IconCameraDisabledLektur as IconCameraDisabled } from '../../icons';
 
 import AbstractButton from './AbstractButton';
 import type { Props } from './AbstractButton';

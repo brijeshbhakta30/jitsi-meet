@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 
-import { IconCameraDisabled } from '../../../base/icons';
+import { IconCameraDisabledLektur as IconCameraDisabled } from '../../../base/icons';
 import { BaseIndicator } from '../../../base/react';
 
 /**
@@ -17,8 +17,8 @@ export default class VideoMutedIndicator extends Component<{}> {
     render() {
         return (
             <BaseIndicator
-                highlight = { false }
-                icon = { IconCameraDisabled } />
+                highlight={false}
+                icon={IconCameraDisabled} />
         );
     }
 }
