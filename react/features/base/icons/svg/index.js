@@ -14,6 +14,7 @@ export { default as IconBlurBackground } from './blur-background.svg';
 export { default as IconCamera } from './camera.svg';
 export { default as IconCameraLektur } from './camera-lektur.svg';
 export { default as IconCameraDisabled } from './camera-disabled.svg';
+export { default as IconCameraDisabledLektur } from './camera-disabled-lektur.svg';
 export { default as IconCancelSelection } from './cancel.svg';
 export { default as IconChat } from './chat.svg';
 export { default as IconChatLektur } from './chat-lektur.svg';
