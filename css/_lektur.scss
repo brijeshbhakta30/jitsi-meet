@@ -11,18 +11,14 @@
     cursor: pointer;
 
     &:hover {
-        background-color: #daebfa;
-        border: 1px solid #daebfa;
+        background-color: #b9b9b9;
     }
 
     &.toggled {
-        background: #2a3a4b;
-        border: 1px solid #5e6d7a;
-
+        background: #daebfa;
         svg {
-            fill: #fff;
+            fill: $svgColor;
         }
-
         &:hover {
             background-color: #5e6d7a;
         }
