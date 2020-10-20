@@ -168,7 +168,7 @@
     }
 
     &__hoverOverlay {
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(0, 0, 0, 0.2);
         border-radius: $borderRadius;
         position: absolute;
         top: 0px;
@@ -649,7 +649,7 @@
     }
 
     .displayNameContainer {
-        visibility: hidden;
+        visibility: visible;
     }
 
     .videocontainer__hoverOverlay {
@@ -685,7 +685,8 @@
     }
 
     .displayNameContainer {
-        visibility: hidden;
+        // Visible because we want to show the name even if the video is on
+        visibility: visible;
     }
 
     .videocontainer__hoverOverlay {
