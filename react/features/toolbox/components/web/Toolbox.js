@@ -1264,7 +1264,7 @@ class Toolbox extends Component<Props, State> {
             // NOTE: disabling buttons as per requirements
             // TODO: Enable disable sharing options from here
             // TODO: Get the icon for this button
-            // buttonsLeft.push('desktop');
+            buttonsLeft.push('desktop');
         }
         if (this._shouldShowButton('raisehand')) {
             // NOTE: disabling buttons as per requirements
@@ -1351,8 +1351,10 @@ class Toolbox extends Component<Props, State> {
                 </div>
                 <div className='button-group-center'>
                     {this._renderAudioButton()}
-                    <HangupButton
-                        visible={this._shouldShowButton('hangup')} />
+                    <div className="hangup-wrapper">
+                        <HangupButton
+                            visible={this._shouldShowButton('hangup')} />
+                    </div>
                     {this._renderVideoButton()}
                 </div>
                 <div className='button-group-right'>
