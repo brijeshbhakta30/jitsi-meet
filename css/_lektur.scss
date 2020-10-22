@@ -13,6 +13,10 @@
 .jitsi-icon svg {
     fill: $svgColor !important;
 }
+
+.invite-more-container {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)) !important;
+}
 #new-toolbox > div.toolbox-content > div.button-group-center > div.hangup-wrapper .toolbox-icon {
     background-color: $hangupColor;
     border: 1px solid $hangupColor;
