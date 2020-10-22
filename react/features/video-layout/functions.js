@@ -106,7 +106,8 @@ export function shouldDisplayTileView(state: Object = {}) {
         || getPinnedParticipant(state)
 
         // It's a 1-on-1 meeting
-        || participantCount < 3
+        // Move to tile view for 1-on-1 meetings as well
+        // || participantCount < 3
 
         // There is a shared YouTube video in the meeting
         || isYoutubeVideoPlaying(state)

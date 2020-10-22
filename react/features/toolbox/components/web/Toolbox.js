@@ -343,9 +343,10 @@ class Toolbox extends Component<Props, State> {
             this._onResize();
         }
 
-        if (this.props._participants?.length > 1 && !this.props._tileViewEnabled) {
-            this._doToggleTileView();
-        }
+        // NOTE: automatic handling of tile view if participants are more than 1.
+        // if (this.props._participants?.length > 1 && !this.props._tileViewEnabled) {
+        //     this._doToggleTileView();
+        // }
     }
 
     /**
