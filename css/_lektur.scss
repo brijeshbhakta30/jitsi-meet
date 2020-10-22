@@ -1,3 +1,15 @@
+.large-video-labels {
+    right: 0 !important;
+}
+
+.large-video-labels > * {
+    display: none;
+}
+
+.large-video-labels .toolbox-button {
+    display: block !important;
+}
+
 .invite-icon-header {
     right: 50px !important;
     top: 0px;
