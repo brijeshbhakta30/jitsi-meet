@@ -10,6 +10,24 @@
     display: block !important;
 }
 
+.jitsi-icon svg {
+    fill: $svgColor !important;
+}
+#new-toolbox > div.toolbox-content > div.button-group-center > div.hangup-wrapper .toolbox-icon {
+    background-color: $hangupColor;
+    border: 1px solid $hangupColor;
+    width: 56px;
+    height: 56px;
+
+    &:hover {
+        background-color: $hangupColor;
+    }
+
+    svg {
+        fill: #fff !important;
+    }
+}
+
 .invite-icon-header {
     right: 50px !important;
     top: 0px;

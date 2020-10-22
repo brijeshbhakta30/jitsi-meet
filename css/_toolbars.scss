@@ -115,7 +115,7 @@
                     }
                 }
 
-                &:nth-child(2) {
+                .hangup-wrapper {
                     .toolbox-icon {
                         background-color: $hangupColor;
                         border: 1px solid $hangupColor;

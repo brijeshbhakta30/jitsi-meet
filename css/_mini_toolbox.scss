@@ -34,7 +34,7 @@
             }
         }
 
-        &:nth-child(2) {
+        .hangup-wrapper {
             svg {
                 fill: $hangupColor;
             }
