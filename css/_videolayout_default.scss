@@ -38,7 +38,7 @@
 
     &__background {
         @include topLeft();
-        background-color: black;
+        background-color: $appBlue;
         border-radius: $borderRadius;
         width: 100%;
         height: 100%;
@@ -516,6 +516,15 @@
     position: relative;
     overflow: hidden;
     visibility: inherit;
+    .avatar {
+        background-color: white !important;
+        color: $appBlue;
+        svg {
+            text {
+                fill: $appBlue;
+            }
+        }
+    }
 }
 
 .dynamic-shadow {
@@ -543,6 +552,13 @@
         top: 0px;
         left: 0px;
         position: absolute;
+        background-color: white !important;
+        color: $appBlue;
+        svg {
+            text {
+                fill: $appBlue;
+            }
+        }
     }
 }
 

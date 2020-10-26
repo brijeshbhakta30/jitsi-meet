@@ -4,9 +4,10 @@
  * Style variables
  */
 $baseFontFamily: -apple-system, BlinkMacSystemFont, "open_sanslight", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$hangupColor: #1c6ce3;
+$appBlue: #1c6ce3;
+$svgColor: $appBlue;
+$hangupColor: $appBlue;
 $hangupFontSize: 2em;
-$svgColor: #6b59cc;
 
 /**
  * Size variables.
