@@ -26,6 +26,7 @@ export default class SharedVideoThumb extends SmallVideo {
         this.$container = $(this.container);
         this._setThumbnailSize();
         this.bindHoverHandler();
+        this.bindResizeHandler();
         this.isVideoMuted = true;
         this.updateDisplayName();
         this.container.onclick = this._onContainerClick;

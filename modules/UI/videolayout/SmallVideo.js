@@ -207,6 +207,36 @@ export default class SmallVideo {
     }
 
     /**
+     * Configures resize of window handlers.
+     */
+    bindResizeHandler() {
+        // Add hover handler
+        // Note: ignoring hover listener on small video
+        this.$container.resize(
+            () => {
+                debugger;
+                const message = 'resize event called::';
+
+                if (this.$container.hasClass('active-speaker')) {
+                    this.focus();
+
+                    const focusMessage = 'This feed has been focused:';
+
+                    logger.debug(focusMessage);
+                    logger.log(focusMessage);
+                    logger.error(focusMessage);
+                    logger.info(focusMessage);
+                }
+                logger.debug(message);
+                logger.log(message);
+                logger.error(message);
+                logger.info(message);
+                this.updateView();
+            }
+        );
+    }
+
+    /**
      * Unmounts the ConnectionIndicator component.
 
     * @returns {void}
