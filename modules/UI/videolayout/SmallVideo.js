@@ -215,7 +215,7 @@ export default class SmallVideo {
             () => {
                 clearTimeout(window.resizedFinished);
                 window.resizedFinished = setTimeout(() => {
-                    this.isPIPMode = window.innerHeight < 200 || window.innerWidth < 320;
+                    this.isPIPMode = window.innerHeight < 350 || window.innerWidth < 500;
                     if (this.isPIPMode) {
                         setTimeout(() => {
                             $('.active-speaker').click();
