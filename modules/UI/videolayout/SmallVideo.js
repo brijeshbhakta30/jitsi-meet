@@ -81,6 +81,7 @@ export default class SmallVideo {
      * Constructor.
      */
     constructor(VideoLayout) {
+        this.isPIPMode = false;
         this.isAudioMuted = false;
         this.isVideoMuted = false;
         this.isScreenSharing = false;
@@ -210,28 +211,17 @@ export default class SmallVideo {
      * Configures resize of window handlers.
      */
     bindResizeHandler() {
-        // Add hover handler
-        // Note: ignoring hover listener on small video
-        this.$container.resize(
+        $(window).resize(
             () => {
-                debugger;
-                const message = 'resize event called::';
-
-                if (this.$container.hasClass('active-speaker')) {
-                    this.focus();
-
-                    const focusMessage = 'This feed has been focused:';
-
-                    logger.debug(focusMessage);
-                    logger.log(focusMessage);
-                    logger.error(focusMessage);
-                    logger.info(focusMessage);
-                }
-                logger.debug(message);
-                logger.log(message);
-                logger.error(message);
-                logger.info(message);
-                this.updateView();
+                clearTimeout(window.resizedFinished);
+                window.resizedFinished = setTimeout(() => {
+                    this.isPIPMode = window.innerHeight < 200 || window.innerWidth < 320;
+                    if (this.isPIPMode) {
+                        setTimeout(() => {
+                            $('.active-speaker').click();
+                        }, 1);
+                    }
+                }, 250);
             }
         );
     }
@@ -652,6 +642,9 @@ export default class SmallVideo {
         this.$container.toggleClass('active-speaker', this._showDominantSpeaker);
         this.updateIndicators();
         this.updateView();
+        if (this.isPIPMode) {
+            $('.active-speaker').click();
+        }
     }
 
     /**
