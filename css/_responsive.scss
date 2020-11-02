@@ -2,6 +2,14 @@
     .new-toolbox, .invite-more-container, .invite-icon-header {
         display: none !important;
     }
+    .active-speaker {
+        height: 100% !important;
+        width: 100% !important;
+        position: absolute !important;
+        video {
+            object-fit: cover !important;
+        }
+    }
 }
 @media only screen and (max-width: $smallScreen) {
     .watermark {
