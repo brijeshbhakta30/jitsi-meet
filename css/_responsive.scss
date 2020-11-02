@@ -8,6 +8,7 @@
         position: absolute !important;
         video {
             object-fit: cover !important;
+            z-index: 9;
         }
     }
 }
