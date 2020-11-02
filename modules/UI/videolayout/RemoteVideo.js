@@ -84,6 +84,7 @@ export default class RemoteVideo extends SmallVideo {
         this.updateIndicators();
         this.updateDisplayName();
         this.bindHoverHandler();
+        this.bindResizeHandler();
         this.flipX = false;
         this.isLocal = false;
         this.popupMenuIsHovered = false;

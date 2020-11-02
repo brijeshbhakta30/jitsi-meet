@@ -207,6 +207,19 @@ export default class SmallVideo {
     }
 
     /**
+     * Configures resize of window handlers.
+     */
+    bindResizeHandler() {
+        // Add hover handler
+        // Note: ignoring hover listener on small video
+        this.$container.resize(
+            () => {
+                this.updateView();
+            }
+        );
+    }
+
+    /**
      * Unmounts the ConnectionIndicator component.
 
     * @returns {void}
