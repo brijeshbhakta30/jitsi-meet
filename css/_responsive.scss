@@ -5,7 +5,7 @@
     .tile-view .filmstrip__videos .videocontainer:not(.active-speaker) {
         display: none !important;
     }
-    .tile-view #filmstripRemoteVideosContainer, .localVideoTileViewContainer {
+    .tile-view #filmstripRemoteVideosContainer, .tile-view #localVideoTileViewContainer {
         width: 100% !important;
         height: 100% !important;
         min-width: 100% !important;
@@ -21,6 +21,10 @@
             &.active-speaker {
                 video {
                     object-fit: cover !important;
+                }
+                .avatar-container {
+                    height: 80px !important;
+                    width: 80px !important;
                 }
             }
         }
