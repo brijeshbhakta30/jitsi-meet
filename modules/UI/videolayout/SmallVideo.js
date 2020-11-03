@@ -215,12 +215,7 @@ export default class SmallVideo {
             () => {
                 clearTimeout(window.resizedFinished);
                 window.resizedFinished = setTimeout(() => {
-                    this.isPIPMode = window.innerHeight < 350 || window.innerWidth < 500;
-                    if (this.isPIPMode) {
-                        setTimeout(() => {
-                            $('.active-speaker').click();
-                        }, 1);
-                    }
+                    this.selectActiveSpeaker();
                 }, 250);
             }
         );
@@ -642,8 +637,17 @@ export default class SmallVideo {
         this.$container.toggleClass('active-speaker', this._showDominantSpeaker);
         this.updateIndicators();
         this.updateView();
-        if (this.isPIPMode) {
-            $('.active-speaker').click();
+        this.selectActiveSpeaker();
+    }
+
+    /**
+     * Select the active speaker only if the screen is PIP mode
+     */
+    selectActiveSpeaker() {
+        if (window.innerHeight < 350 || window.innerWidth < 500) {
+            setTimeout(() => {
+                $('.active-speaker').click();
+            }, 1);
         }
     }
 
