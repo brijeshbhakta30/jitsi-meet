@@ -3,7 +3,15 @@
         display: none !important;
     }
     .tile-view .filmstrip__videos .videocontainer:not(.active-speaker) {
-        display: none !important;
+        visibility: hidden !important;
+        width: 0 !important;
+        height: 0 !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        z-index: 1;
+    }
+    .tile-view .filmstrip__videos .videocontainer.active-speaker {
+        z-index: 11111111;
     }
     .tile-view #filmstripRemoteVideosContainer, .tile-view #localVideoTileViewContainer {
         width: 100% !important;
