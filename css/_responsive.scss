@@ -3,11 +3,6 @@
         display: none !important;
     }
     .tile-view .filmstrip__videos .videocontainer:not(.active-speaker) {
-        visibility: hidden !important;
-        width: 0 !important;
-        height: 0 !important;
-        min-width: 0 !important;
-        min-height: 0 !important;
         z-index: 1;
     }
     .tile-view .filmstrip__videos .videocontainer.active-speaker {
@@ -52,19 +47,6 @@
             }
         }
     }
-    // .active-speaker {
-    //     height: 100% !important;
-    //     width: 100% !important;
-    //     position: absolute !important;
-    //     top: 0;
-    //     left: 0;
-    //     box-shadow: none !important;
-    //     margin: 0 !important;
-    //     video {
-    //         // object-fit: cover !important;
-    //         z-index: 9;
-    //     }
-    // }
 }
 @media only screen and (max-width: $smallScreen) {
     .watermark {
