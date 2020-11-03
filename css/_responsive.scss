@@ -4,6 +4,7 @@
     }
     .tile-view .filmstrip__videos .videocontainer:not(.active-speaker) {
         z-index: 1;
+        display: none !important;
     }
     .tile-view .filmstrip__videos .videocontainer.active-speaker {
         z-index: 11111111;
