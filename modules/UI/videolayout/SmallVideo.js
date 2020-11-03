@@ -644,11 +644,11 @@ export default class SmallVideo {
      * Select the active speaker only if the screen is PIP mode
      */
     selectActiveSpeaker() {
-        if (window.innerHeight < 350 || window.innerWidth < 500) {
-            setTimeout(() => {
-                $('.active-speaker').click();
-            }, 1);
-        }
+        // if (window.innerHeight < 350 || window.innerWidth < 500) {
+        //     setTimeout(() => {
+        //         $('.active-speaker').click();
+        //     }, 1);
+        // }
     }
 
     /**
