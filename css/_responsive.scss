@@ -2,19 +2,52 @@
     .new-toolbox, .invite-more-container, .invite-icon-header {
         display: none !important;
     }
-    // .active-speaker {
-    //     height: 100% !important;
-    //     width: 100% !important;
-    //     position: absolute !important;
-    //     top: 0;
-    //     left: 0;
-    //     box-shadow: none !important;
-    //     margin: 0 !important;
-    //     video {
-    //         // object-fit: cover !important;
-    //         z-index: 9;
-    //     }
-    // }
+    .tile-view .filmstrip__videos .videocontainer:not(.active-speaker) {
+        z-index: 1;
+        display: none !important;
+    }
+    .tile-view .filmstrip__videos .videocontainer.active-speaker {
+        z-index: 11111111;
+    }
+    .tile-view #filmstripRemoteVideosContainer, .tile-view #localVideoTileViewContainer {
+        width: 100% !important;
+        height: 100% !important;
+        min-width: 100% !important;
+        min-height: 100% !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        .videocontainer {
+            width: 100% !important;
+            height: 100% !important;
+            min-width: 100% !important;
+            min-height: 100% !important;
+            margin: 0 !important;
+            &.active-speaker {
+                video {
+                    object-fit: cover !important;
+                }
+                .avatar-container {
+                    height: 80px !important;
+                    width: 80px !important;
+                }
+            }
+        }
+    }
+    .videospace {
+        position: relative !important;
+        .videocontainer.active-speaker {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            margin: 0;
+            video {
+                object-fit: cover !important;
+            }
+        }
+    }
 }
 @media only screen and (max-width: $smallScreen) {
     .watermark {
