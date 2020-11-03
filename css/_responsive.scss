@@ -2,6 +2,17 @@
     .new-toolbox, .invite-more-container, .invite-icon-header {
         display: none !important;
     }
+    .tile-view .filmstrip__videos .videocontainer:not(.active-speaker) {
+        display: none !important;
+    }
+    .tile-view #filmstripRemoteVideosContainer {
+        width: 100% !important;
+        height: 100% !important;
+        .videocontainer {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
     .videospace {
         position: relative !important;
         .videocontainer.active-speaker {
@@ -14,9 +25,6 @@
             video {
                 object-fit: cover !important;
             }
-        }
-        .videocontainer:not(.active-speaker) {
-            display: none;
         }
     }
     // .active-speaker {
