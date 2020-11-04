@@ -29,6 +29,7 @@ class LekturRecordingButton extends Component {
         this._onStopCapture = this._onStopCapture.bind(this);
         this._onStartRecording = this._onStartRecording.bind(this);
         this._onSave = this._onSave.bind(this);
+        this._onRecordingEvent = this._onRecordingEvent.bind(this);
     }
 
     /**
@@ -49,7 +50,6 @@ class LekturRecordingButton extends Component {
      */
     async _onStartRecording() {
         this.start.click();
-        this.props.dispatch(setLekturRecordingFlag(true));
     }
 
     /**
@@ -64,6 +64,15 @@ class LekturRecordingButton extends Component {
     }
 
     /**
+     * Listens for the recording event sent by recorder file.
+     *
+     * @returns {null}
+     */
+    _onRecordingEvent() {
+        this.props.dispatch(setLekturRecordingFlag(true));
+    }
+
+    /**
      * Component did mount for recorder which add events to video playback.
      *
      * @returns {null}
@@ -72,6 +81,17 @@ class LekturRecordingButton extends Component {
         this.start = document.getElementById('recordStart');
         this.stop = document.getElementById('recordStop');
         this.save = document.getElementById('recordSave');
+
+        this.start.addEventListener('recordingEvent', this._onRecordingEvent, false);
+    }
+
+    /**
+     * Component will un mount for recorder which will remove the event listeners.
+     *
+     * @returns {null}
+     */
+    componentWillUnmount() {
+        this.start.removeEventListener('recordingEvent', this._onRecordingEvent, false);
     }
 
     /**

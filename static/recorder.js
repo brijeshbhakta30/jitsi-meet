@@ -1,6 +1,10 @@
 // eslint-disable-next-line no-unused-vars
 const status = document.getElementById('status');
 
+
+const recordingEvent = new Event('recordingEvent');
+
+
 /**
  * Play the recording in a popup window
  * */
@@ -88,6 +92,7 @@ start.addEventListener('click', async () => {
         return;
     }
 
+    start.dispatchEvent(recordingEvent);
     recorderStream = gumStream ? mixer(gumStream, gdmStream) : gdmStream;
     recorder = new MediaRecorder(recorderStream, { mimeType: 'video/webm' });
 
