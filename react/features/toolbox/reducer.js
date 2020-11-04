@@ -12,7 +12,8 @@ import {
     SET_TOOLBOX_TIMEOUT,
     SET_TOOLBOX_TIMEOUT_MS,
     SET_TOOLBOX_VISIBLE,
-    TOGGLE_TOOLBOX_VISIBLE
+    TOGGLE_TOOLBOX_VISIBLE,
+    SET_LEKTUR_RECORDING
 } from './actionTypes';
 
 declare var interfaceConfig: Object;
@@ -107,7 +108,9 @@ function _getInitialState() {
          *
          * @type {boolean}
          */
-        visible
+        visible,
+
+        isLekturRecording: false
     };
 }
 
@@ -167,6 +170,12 @@ ReducerRegistry.register(
 
         case SET_TOOLBOX_VISIBLE:
             return set(state, 'visible', state.alwaysVisible || action.visible);
+
+        case SET_LEKTUR_RECORDING:
+            return {
+                ...state,
+                isLekturRecording: action.isRecording
+            };
 
         case TOGGLE_TOOLBOX_VISIBLE:
             return set(state, 'visible', state.alwaysVisible || !state.visible);

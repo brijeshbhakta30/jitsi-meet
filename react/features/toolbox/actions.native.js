@@ -9,7 +9,8 @@ import {
     SET_TOOLBOX_TIMEOUT,
     SET_TOOLBOX_TIMEOUT_MS,
     SET_TOOLBOX_VISIBLE,
-    TOGGLE_TOOLBOX_VISIBLE
+    TOGGLE_TOOLBOX_VISIBLE,
+    SET_LEKTUR_RECORDING
 } from './actionTypes';
 
 
@@ -127,6 +128,22 @@ export function setToolboxTimeoutMS(timeoutMS: number): Object {
     return {
         type: SET_TOOLBOX_TIMEOUT_MS,
         timeoutMS
+    };
+}
+
+/**
+ * Dispatches an action which sets lektur recording value.
+ *
+ * @param {boolean} isRecording - Recording flag.
+ * @returns {{
+ *     type: SET_LEKTUR_RECORDING,
+ *     isRecording: boolean
+ * }}
+ */
+export function setLekturRecording(isRecording: boolean): Object {
+    return {
+        type: SET_LEKTUR_RECORDING,
+        isRecording
     };
 }
 

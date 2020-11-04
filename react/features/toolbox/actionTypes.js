@@ -93,6 +93,8 @@ export const SET_TOOLBOX_TIMEOUT = 'SET_TOOLBOX_TIMEOUT';
  */
 export const SET_TOOLBOX_TIMEOUT_MS = 'SET_TOOLBOX_TIMEOUT_MS';
 
+export const SET_LEKTUR_RECORDING = 'SET_LEKTUR_RECORDING';
+
 /**
  * The type of the (redux) action which shows/hides the Toolbox.
  *

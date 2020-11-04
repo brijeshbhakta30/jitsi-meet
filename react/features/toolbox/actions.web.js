@@ -10,7 +10,8 @@ import {
     clearToolboxTimeout,
     setToolboxTimeout,
     setToolboxTimeoutMS,
-    setToolboxVisible
+    setToolboxVisible,
+    setLekturRecording
 } from './actions.native';
 
 declare var interfaceConfig: Object;
@@ -145,5 +146,17 @@ export function showToolbox(timeout: number = 0): Object {
                 dispatch(setToolboxTimeoutMS(interfaceConfig.TOOLBAR_TIMEOUT));
             }
         }
+    };
+}
+
+/**
+ * States if the record is in process.
+ *
+ * @param {boolean} isRecording - States if the video is been recording.
+ * @returns {Function}
+ */
+export function setLekturRecordingFlag(isRecording: boolean) {
+    return (dispatch: Dispatch<any>) => {
+        dispatch(setLekturRecording(isRecording));
     };
 }
