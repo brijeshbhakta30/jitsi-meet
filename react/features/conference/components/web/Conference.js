@@ -16,7 +16,7 @@ import { beginAddPeople, CalleeInfoContainer } from '../../../invite';
 import { LargeVideo } from '../../../large-video';
 import { KnockingParticipantList, LobbyScreen } from '../../../lobby';
 import { Prejoin, isPrejoinPageVisible } from '../../../prejoin';
-import { fullScreenChanged, setToolboxAlwaysVisible, showToolbox } from '../../../toolbox/actions.web';
+import { fullScreenChanged, setToolboxAlwaysVisible, showToolbox, setLekturRecordingFlag } from '../../../toolbox/actions.web';
 import { Toolbox } from '../../../toolbox/components/web';
 import ToolbarButton from '../../../toolbox/components/web/ToolbarButton';
 import { LAYOUTS, getCurrentLayout } from '../../../video-layout';
@@ -125,6 +125,7 @@ class Conference extends AbstractConference<Props, *> {
         // Bind event handler so it is only bound once for every instance.
         this._onFullScreenChange = this._onFullScreenChange.bind(this);
         this._onToolbarOpenInvite = this._onToolbarOpenInvite.bind(this);
+        this._onRecordingEvent = this._onRecordingEvent.bind(this);
     }
 
     /**
@@ -135,6 +136,9 @@ class Conference extends AbstractConference<Props, *> {
     componentDidMount() {
         document.title = `${this.props._roomName} | ${interfaceConfig.APP_NAME}`;
         this._start();
+
+        this.start = document.getElementById('recordStart');
+        this.start.addEventListener('recordingEvent', this._onRecordingEvent, false);
     }
 
     /**
@@ -169,6 +173,7 @@ class Conference extends AbstractConference<Props, *> {
             document.removeEventListener(name, this._onFullScreenChange));
 
         APP.conference.isJoined() && this.props.dispatch(disconnect());
+        this.start.removeEventListener('recordingEvent', this._onRecordingEvent, false);
     }
 
     /**
@@ -246,6 +251,15 @@ class Conference extends AbstractConference<Props, *> {
      */
     _onToolbarOpenInvite() {
         this.props.dispatch(beginAddPeople());
+    }
+
+    /**
+     * Listens for the recording event sent by recorder file.
+     *
+     * @returns {null}
+     */
+    _onRecordingEvent() {
+        this.props.dispatch(setLekturRecordingFlag(true));
     }
 
     /**
