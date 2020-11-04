@@ -58,7 +58,9 @@ class LekturRecordingButton extends Component {
      * @returns {null}
      */
     _onSave() {
-        this.save.click();
+        setTimeout(() => {
+            this.save.click();
+        }, 200);
     }
 
     /**
