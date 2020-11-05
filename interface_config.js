@@ -52,7 +52,7 @@ var interfaceConfig = {
 
     DISABLE_DOMINANT_SPEAKER_INDICATOR: true,
 
-    DISABLE_FOCUS_INDICATOR: true,
+    DISABLE_FOCUS_INDICATOR: false,
 
     /**
      * If true, notifications regarding joining/leaving are no longer displayed.
