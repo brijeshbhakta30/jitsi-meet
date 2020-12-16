@@ -2,6 +2,7 @@
 
 import type { Dispatch } from 'redux';
 
+import { disconnect } from '../base/connection';
 import { getParticipantDisplayName } from '../base/participants';
 import {
     NOTIFICATION_TYPE,
@@ -31,5 +32,7 @@ export function notifyKickedOut(participant: Object, _: ?Function) { // eslint-d
             titleKey: 'dialog.kickTitle',
             titleArguments: args
         }));
+
+        dispatch(disconnect(false));
     };
 }

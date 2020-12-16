@@ -80,6 +80,7 @@ import HangupButton from '../HangupButton';
 import HelpButton from '../HelpButton';
 
 import AudioSettingsButton from './AudioSettingsButton';
+import LekturKickAllAndEndButton from './LekturKickAllAndEndButton';
 import LekturRecordingButton from './LekturRecordingButton';
 import MuteEveryoneButton from './MuteEveryoneButton';
 import OverflowMenuButton from './OverflowMenuButton';
@@ -1039,6 +1040,7 @@ class Toolbox extends Component<Props, State> {
                 key='livestreaming'
                 showLabel={true} />,
             <LekturRecordingButton key='lektur-recorder' />,
+            <LekturKickAllAndEndButton key='lektur-kick-all-end' />,
             this._shouldShowButton('sharedvideo')
             && <OverflowMenuItem
                 accessibilityLabel={t('toolbar.accessibilityLabel.sharedvideo')}
