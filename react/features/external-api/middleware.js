@@ -107,15 +107,20 @@ MiddlewareRegistry.register(store => next => action => {
         APP.API.notifyDominantSpeakerChanged(action.participant.id);
         break;
 
-    case KICKED_OUT:
-        APP.API.notifyKickedOut(
-            {
-                id: getLocalParticipant(store.getState()).id,
-                local: true
-            },
-            { id: action.participant.getId() }
-        );
+    case KICKED_OUT: {
+        try {
+            APP.API.notifyKickedOut(
+                {
+                    id: getLocalParticipant(store.getState()).id,
+                    local: true
+                },
+                { id: action.participant.getId() }
+            );
+        } catch (error) {
+            console.log('Error in kicked out middleware');
+        }
         break;
+    }
 
     case NOTIFY_CAMERA_ERROR:
         if (action.error) {
