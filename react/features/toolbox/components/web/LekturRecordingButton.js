@@ -81,8 +81,9 @@ class LekturRecordingButton extends Component {
         this.start = document.getElementById('recordStart');
         this.stop = document.getElementById('recordStop');
         this.save = document.getElementById('recordSave');
-
-        this.start.addEventListener('recordingEvent', this._onRecordingEvent, false);
+        if (this.start) {
+            this.start.addEventListener('recordingEvent', this._onRecordingEvent, false);
+        }
     }
 
     /**
@@ -91,7 +92,9 @@ class LekturRecordingButton extends Component {
      * @returns {null}
      */
     componentWillUnmount() {
-        this.start.removeEventListener('recordingEvent', this._onRecordingEvent, false);
+        if (this.start) {
+            this.start.removeEventListener('recordingEvent', this._onRecordingEvent, false);
+        }
     }
 
     /**
@@ -106,15 +109,15 @@ class LekturRecordingButton extends Component {
         return (
             <>
                 {isLekturRecording ? <OverflowMenuItem
-                    accessibilityLabel = { t('toolbar.accessibilityLabel.recording') }
-                    icon = { IconToggleRecording }
-                    onClick = { this._onStopCapture }
-                    text = { t('dialog.stopRecording') } />
+                    accessibilityLabel={t('toolbar.accessibilityLabel.recording')}
+                    icon={IconToggleRecording}
+                    onClick={this._onStopCapture}
+                    text={t('dialog.stopRecording')} />
                     : <OverflowMenuItem
-                        accessibilityLabel = { t('toolbar.accessibilityLabel.recording') }
-                        icon = { IconToggleRecording }
-                        onClick = { this._onStartRecording }
-                        text = { t('dialog.startRecording') } />}
+                        accessibilityLabel={t('toolbar.accessibilityLabel.recording')}
+                        icon={IconToggleRecording}
+                        onClick={this._onStartRecording}
+                        text={t('dialog.startRecording')} />}
             </>
         );
     }

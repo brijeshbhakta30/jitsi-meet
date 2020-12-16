@@ -138,7 +138,9 @@ class Conference extends AbstractConference<Props, *> {
         this._start();
 
         this.start = document.getElementById('recordStart');
-        this.start.addEventListener('recordingEvent', this._onRecordingEvent, false);
+        if (this.start) {
+            this.start.addEventListener('recordingEvent', this._onRecordingEvent, false);
+        }
     }
 
     /**
@@ -173,7 +175,9 @@ class Conference extends AbstractConference<Props, *> {
             document.removeEventListener(name, this._onFullScreenChange));
 
         APP.conference.isJoined() && this.props.dispatch(disconnect());
-        this.start.removeEventListener('recordingEvent', this._onRecordingEvent, false);
+        if (this.start) {
+            this.start.removeEventListener('recordingEvent', this._onRecordingEvent, false);
+        }
     }
 
     /**
