@@ -51,6 +51,7 @@ export { default as IconHelp } from './help.svg';
 export { default as IconInfo } from './info.svg';
 export { default as IconInviteMore } from './user-plus.svg';
 export { default as IconInviteMoreLektur } from './invite.svg';
+export { default as IconTileLektur } from './tile.svg';
 export { default as IconKick } from './kick.svg';
 export { default as IconLiveStreaming } from './public.svg';
 export { default as IconMeetingLocked } from './meeting-locked.svg';

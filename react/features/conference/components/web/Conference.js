@@ -8,7 +8,7 @@ import { getConferenceNameForTitle } from '../../../base/conference';
 import interfaceConfig from '../../../base/config/interfaceConfig';
 import { connect, disconnect } from '../../../base/connection';
 import { translate } from '../../../base/i18n';
-import { IconInviteMoreLektur as IconInviteMore } from '../../../base/icons';
+import { IconInviteMoreLektur as IconInviteMore, IconTileLektur } from '../../../base/icons';
 import { connect as reactReduxConnect } from '../../../base/redux';
 import { Chat } from '../../../chat';
 import { Filmstrip } from '../../../filmstrip';
@@ -19,7 +19,7 @@ import { Prejoin, isPrejoinPageVisible } from '../../../prejoin';
 import { fullScreenChanged, setToolboxAlwaysVisible, showToolbox, setLekturRecordingFlag } from '../../../toolbox/actions.web';
 import { Toolbox } from '../../../toolbox/components/web';
 import ToolbarButton from '../../../toolbox/components/web/ToolbarButton';
-import { LAYOUTS, getCurrentLayout } from '../../../video-layout';
+import { LAYOUTS, getCurrentLayout, toggleTileView } from '../../../video-layout';
 import { maybeShowSuboptimalExperienceNotification } from '../../functions';
 import {
     AbstractConference,
@@ -125,7 +125,9 @@ class Conference extends AbstractConference<Props, *> {
         // Bind event handler so it is only bound once for every instance.
         this._onFullScreenChange = this._onFullScreenChange.bind(this);
         this._onToolbarOpenInvite = this._onToolbarOpenInvite.bind(this);
+        this._onToggleTileView = this._onToggleTileView.bind(this);
         this._onRecordingEvent = this._onRecordingEvent.bind(this);
+        this._renderInvite = this._renderInvite.bind(this);
     }
 
     /**
@@ -197,30 +199,22 @@ class Conference extends AbstractConference<Props, *> {
             _isLobbyScreenVisible,
             _layoutClassName,
             _showPrejoin,
-            t,
+            t
         } = this.props;
         const hideLabels = filmstripOnly || _iAmRecorder;
 
         return (
             <div
-                className={_layoutClassName}
-                id='videoconference_page'
-                onMouseMove={this._onShowToolbar}>
+                className = { _layoutClassName }
+                id = 'videoconference_page'
+                onMouseMove = { this._onShowToolbar }>
 
                 <Notice />
-                <div id='videospace'>
+                <div id = 'videospace'>
                     <LargeVideo />
                     <KnockingParticipantList />
-                    <Filmstrip filmstripOnly={filmstripOnly} />
-                    {hideLabels || <Labels renderInvite={
-                        (className) => <ToolbarButton
-                            accessibilityLabel=
-                            {t('toolbar.accessibilityLabel.invite')}
-                            icon={IconInviteMore}
-                            className={className + ' invite-icon-header'}
-                            onClick={this._onToolbarOpenInvite}
-                            tooltip={t('toolbar.invite')} />
-                    } />}
+                    <Filmstrip filmstripOnly = { filmstripOnly } />
+                    {hideLabels || <Labels renderInvite = { this._renderInvite } />}
                 </div>
 
                 { filmstripOnly || _showPrejoin || _isLobbyScreenVisible || <Toolbox />}
@@ -247,6 +241,35 @@ class Conference extends AbstractConference<Props, *> {
     }
 
     /**
+    * Maps (parts of) the Redux state to the associated props for the
+    * {@code Conference} component.
+    *
+    * @param {string} className - Class name to be added to the components.
+    * @private
+    * @returns {Props}
+    */
+    _renderInvite(className) {
+        const { t } = this.props;
+
+        return (<>
+            <ToolbarButton
+                accessibilityLabel =
+                    { t('toolbar.accessibilityLabel.invite') }
+                className = { `${className} invite-icon-header` }
+                icon = { IconInviteMore }
+                onClick = { this._onToolbarOpenInvite }
+                tooltip = { t('toolbar.invite') } />
+            <ToolbarButton
+                accessibilityLabel =
+                    { t('toolbar.accessibilityLabel.tile') }
+                className = { `${className} invite-icon-header tile-icon-header` }
+                icon = { IconTileLektur }
+                onClick = { this._onToggleTileView }
+                tooltip = { t('toolbar.tile') } />
+        </>);
+    }
+
+    /**
      * Creates an analytics toolbar event and dispatches an action for opening
      * the modal for inviting people directly into the conference.
      *
@@ -255,6 +278,16 @@ class Conference extends AbstractConference<Props, *> {
      */
     _onToolbarOpenInvite() {
         this.props.dispatch(beginAddPeople());
+    }
+
+    /**
+     * Toggles tile view mode for conference.
+     *
+     * @private
+     * @returns {void}
+     */
+    _onToggleTileView() {
+        this.props.dispatch(toggleTileView());
     }
 
     /**
