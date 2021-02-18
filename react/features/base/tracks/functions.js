@@ -1,7 +1,7 @@
 /* global APP */
 
 import JitsiMeetJS, { JitsiTrackErrors, browser } from '../lib-jitsi-meet';
-import { MEDIA_TYPE, setAudioMuted } from '../media';
+import { MEDIA_TYPE, VIDEO_TYPE, setAudioMuted } from '../media';
 import {
     getUserSelectedCameraDeviceId,
     getUserSelectedMicDeviceId
@@ -62,6 +62,7 @@ export async function createLocalPresenterTrack(options, desktopHeight) {
  * and/or 'video'.
  * @param {string|null} [options.micDeviceId] - Microphone device id or
  * {@code undefined} to use app's settings.
+ * @param {number|undefined} [oprions.timeout] - A timeout for JitsiMeetJS.createLocalTracks used to create the tracks.
  * @param {boolean} [firePermissionPromptIsShownEvent] - Whether lib-jitsi-meet
  * should check for a {@code getUserMedia} permission prompt and fire a
  * corresponding event.
@@ -71,6 +72,7 @@ export async function createLocalPresenterTrack(options, desktopHeight) {
  */
 export function createLocalTracksF(options = {}, firePermissionPromptIsShownEvent, store) {
     let { cameraDeviceId, micDeviceId } = options;
+    const { desktopSharingSourceDevice, desktopSharingSources, timeout } = options;
 
     if (typeof APP !== 'undefined') {
         // TODO The app's settings should go in the redux store and then the
@@ -105,16 +107,16 @@ export function createLocalTracksF(options = {}, firePermissionPromptIsShownEven
                     cameraDeviceId,
                     constraints,
                     desktopSharingFrameRate,
-                    desktopSharingSourceDevice:
-                        options.desktopSharingSourceDevice,
-                    desktopSharingSources: options.desktopSharingSources,
+                    desktopSharingSourceDevice,
+                    desktopSharingSources,
 
                     // Copy array to avoid mutations inside library.
                     devices: options.devices.slice(0),
                     effects,
                     firefox_fake_device, // eslint-disable-line camelcase
                     micDeviceId,
-                    resolution
+                    resolution,
+                    timeout
                 },
                 firePermissionPromptIsShownEvent)
             .catch(err => {
@@ -318,7 +320,7 @@ export function getTrackByMediaTypeAndParticipant(
         mediaType,
         participantId) {
     return tracks.find(
-        t => t.participantId === participantId && t.mediaType === mediaType
+        t => Boolean(t.jitsiTrack) && t.participantId === participantId && t.mediaType === mediaType
     );
 }
 
@@ -346,12 +348,12 @@ export function getTracksByMediaType(tracks, mediaType) {
 }
 
 /**
- * Checks if the local video track in the given set of tracks is muted.
+ * Checks if the local video camera track in the given set of tracks is muted.
  *
  * @param {Track[]} tracks - List of all tracks.
  * @returns {Track[]}
  */
-export function isLocalVideoTrackMuted(tracks) {
+export function isLocalCameraTrackMuted(tracks) {
     const presenterTrack = getLocalTrack(tracks, MEDIA_TYPE.PRESENTER);
     const videoTrack = getLocalTrack(tracks, MEDIA_TYPE.VIDEO);
 
@@ -382,6 +384,19 @@ export function isLocalTrackMuted(tracks, mediaType) {
 
     return !track || track.muted;
 }
+
+/**
+ * Checks if the local video track is of type DESKtOP.
+ *
+ * @param {Object} state - The redux state.
+ * @returns {boolean}
+ */
+export function isLocalVideoTrackDesktop(state) {
+    const videoTrack = getLocalVideoTrack(state['features/base/tracks']);
+
+    return videoTrack && videoTrack.videoType === VIDEO_TYPE.DESKTOP;
+}
+
 
 /**
  * Returns true if the remote track of the given media type and the given

@@ -41,9 +41,11 @@
         display: none;
     }
 
-    &.shift-right {
-        margin-left: $sidebarWidth;
-        width: calc(100% - #{$sidebarWidth});
+    @media (min-width: 581px) {
+        &.shift-right {
+            margin-left: $sidebarWidth;
+            width: calc(100% - #{$sidebarWidth});
+        }
     }
 
     .toolbox-background {
@@ -154,8 +156,9 @@
                 cursor: pointer;
                 display: flex;
                 font-size: 14px;
-                height: 22px;
+                height: 40px;
                 padding: 5px 12px;
+                box-sizing: border-box;
 
                 div {
                     display: flex;
@@ -163,16 +166,20 @@
                     align-items: center;
                 }
 
-                &:hover {
-                    background-color: $overflowMenuItemHoverBG;
-                    color: $overflowMenuItemHoverColor;
+                @media (hover: hover) and (pointer: fine) {
+                    &:hover {
+                        background-color: $overflowMenuItemHoverBG;
+                        color: $overflowMenuItemHoverColor;
+                    }
                 }
 
                 &.unclickable {
                     cursor: default;
                 }
-                &.unclickable:hover {
-                    background: inherit;
+                @media (hover: hover) and (pointer: fine) {
+                    &.unclickable:hover {
+                        background: inherit;
+                    }
                 }
                 &.disabled {
                     cursor: initial;
@@ -191,15 +198,17 @@
             }
 
             .overflow-menu-item-icon {
-                margin-right: 10px;
+                margin-right: 16px;
 
                 i {
                     display: inline;
                     font-size: 24px;
                 }
 
-                i:hover {
-                    background-color: initial;
+                @media (hover: hover) and (pointer: fine) {
+                    i:hover {
+                        background-color: initial;
+                    }
                 }
 
                 img {
@@ -208,7 +217,9 @@
                 }
 
                 svg {
-                    fill: #b8c7e0 !important;
+                    fill: #B8C7E0 !important;
+                    height: 20px;
+                    width: 20px;
                 }
             }
 

@@ -4,7 +4,8 @@ import type { Dispatch } from 'redux';
 
 import {
     FULL_SCREEN_CHANGED,
-    SET_FULL_SCREEN
+    SET_FULL_SCREEN,
+    SET_OVERFLOW_DRAWER
 } from './actionTypes';
 import {
     clearToolboxTimeout,
@@ -158,5 +159,21 @@ export function showToolbox(timeout: number = 0): Object {
 export function setLekturRecordingFlag(isRecording: boolean) {
     return (dispatch: Dispatch<any>) => {
         dispatch(setLekturRecording(isRecording));
+    };
+}
+
+/**
+ * Signals a request to display overflow as drawer.
+ *
+ * @param {boolean} displayAsDrawer - True to display overflow as drawer, false to preserve original behaviour.
+ * @returns {{
+ *     type: SET_OVERFLOW_DRAWER,
+ *     displayAsDrawer: boolean
+ * }}
+ */
+export function setOverflowDrawer(displayAsDrawer: boolean) {
+    return {
+        type: SET_OVERFLOW_DRAWER,
+        displayAsDrawer
     };
 }
