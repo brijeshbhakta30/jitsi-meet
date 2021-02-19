@@ -40,7 +40,6 @@ export default class LocalVideo extends SmallVideo {
 
         this.localVideoId = null;
         this.bindHoverHandler();
-        this.bindResizeHandler();
         if (!config.disableLocalVideoFlip) {
             this._buildContextMenu();
         }

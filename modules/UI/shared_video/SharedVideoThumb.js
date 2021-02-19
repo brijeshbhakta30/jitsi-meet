@@ -30,7 +30,6 @@ export default class SharedVideoThumb extends SmallVideo {
         this.renderThumbnail();
         this._setThumbnailSize();
         this.bindHoverHandler();
-        this.bindResizeHandler();
         this.container.onclick = this._onContainerClick;
     }
 
