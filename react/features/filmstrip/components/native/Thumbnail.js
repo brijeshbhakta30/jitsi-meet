@@ -177,13 +177,13 @@ function Thumbnail(props: Props) {
                 { renderDominantSpeakerIndicator && <DominantSpeakerIndicator /> }
             </View> }
 
-            { !participant.isFakeParticipant && <View
+            {/* { !participant.isFakeParticipant && <View
                 style = { [
                     styles.thumbnailTopIndicatorContainer,
                     styles.thumbnailTopRightIndicatorContainer
                 ] }>
                 <ConnectionIndicator participantId = { participant.id } />
-            </View> }
+            </View> } */}
 
             { !participant.isFakeParticipant && <Container style = { styles.thumbnailIndicatorContainer }>
                 { audioMuted

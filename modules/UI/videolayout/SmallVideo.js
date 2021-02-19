@@ -334,19 +334,21 @@ export default class SmallVideo {
      * @param show whether to show or hide.
      */
     showDominantSpeakerIndicator(show) {
+        return; // Returning as we don't want to show the indicator
+
         // Don't create and show dominant speaker indicator if
         // DISABLE_DOMINANT_SPEAKER_INDICATOR is true
-        if (interfaceConfig.DISABLE_DOMINANT_SPEAKER_INDICATOR) {
-            return;
-        }
+        // if (interfaceConfig.DISABLE_DOMINANT_SPEAKER_INDICATOR) {
+        //     return;
+        // }
 
-        if (!this.container) {
-            logger.warn(`Unable to set dominant speaker indicator - ${this.videoSpanId} does not exist`);
+        // if (!this.container) {
+        //     logger.warn(`Unable to set dominant speaker indicator - ${this.videoSpanId} does not exist`);
 
-            return;
-        }
+        //     return;
+        // }
 
-        this.$container.toggleClass('active-speaker', show);
+        // this.$container.toggleClass('active-speaker', show);
     }
 
     /**

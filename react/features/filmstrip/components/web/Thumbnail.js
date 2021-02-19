@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 
 import { AudioLevelIndicator } from '../../../audio-level-indicator';
 import { Avatar } from '../../../base/avatar';
+import interfaceConfig from '../../../base/config/interfaceConfig';
 import JitsiMeetJS from '../../../base/lib-jitsi-meet/_';
 import { MEDIA_TYPE, VideoTrack } from '../../../base/media';
 import AudioTrack from '../../../base/media/components/web/AudioTrack';
@@ -23,9 +24,6 @@ import { RemoteVideoMenuTriggerButton } from '../../../remote-video-menu';
 import { getCurrentLayout, LAYOUTS } from '../../../video-layout';
 
 const JitsiTrackEvents = JitsiMeetJS.events.track;
-
-declare var interfaceConfig: Object;
-
 
 /**
  * The type of the React {@code Component} state of {@link Thumbnail}.
@@ -345,7 +343,7 @@ class Thumbnail extends Component<Props, State> {
         return (
             <div>
                 <AtlasKitThemeProvider mode = 'dark'>
-                    { !_connectionIndicatorDisabled
+                    {/* { !_connectionIndicatorDisabled
                         && <ConnectionIndicator
                             alwaysVisible = { showConnectionIndicator }
                             enableStatsDisplay = { true }
@@ -353,7 +351,7 @@ class Thumbnail extends Component<Props, State> {
                             isLocalVideo = { local }
                             participantId = { id }
                             statsPopoverPosition = { statsPopoverPosition } />
-                    }
+                    } */}
                     <RaisedHandIndicator
                         iconSize = { iconSize }
                         participantId = { id }

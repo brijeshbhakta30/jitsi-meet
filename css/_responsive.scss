@@ -218,22 +218,9 @@
 }
 
 .desktop-browser {
-    @media only screen and (max-width: $smallScreen) {
-        @include small-button-size();
-    }
-
-    @media only screen and (max-width: $verySmallScreen) {
-        @include very-small-button-size();
-    }
-
     &.shift-right {
-        @media only screen and (max-width: $smallScreen + $sidebarWidth) {
-            @include small-button-size()
-        }
 
         @media only screen and (max-width: $verySmallScreen + $sidebarWidth) {
-            @include very-small-button-size();
-
             #videoResolutionLabel {
                 display: none;
             }

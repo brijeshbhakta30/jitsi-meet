@@ -209,7 +209,7 @@ class Conference extends AbstractConference<Props, *> {
                     <LargeVideo />
                     <KnockingParticipantList />
                     <Filmstrip />
-                    { hideLabels || <Labels /> }
+                    {hideLabels || <Labels renderInvite = { this._renderInvite } /> }
                 </div>
 
                 { _showPrejoin || _isLobbyScreenVisible || <Toolbox /> }
