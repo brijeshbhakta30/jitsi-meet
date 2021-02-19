@@ -42,7 +42,7 @@ var interfaceConfig = {
      *
      * @type {boolean}
      */
-    CONNECTION_INDICATOR_DISABLED: false,
+    CONNECTION_INDICATOR_DISABLED: true,
 
     DEFAULT_BACKGROUND: '#474747',
     DEFAULT_LOCAL_DISPLAY_NAME: 'me',
