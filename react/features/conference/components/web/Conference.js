@@ -247,13 +247,14 @@ class Conference extends AbstractConference<Props, *> {
         const { t } = this.props;
 
         return (<>
-            <ToolbarButton
+            {/* Lektur: Hiding toolbar for webinar as per request of Kamal */}
+            {/* <ToolbarButton
                 accessibilityLabel =
                     { t('toolbar.accessibilityLabel.invite') }
                 className = { `${className} invite-icon-header` }
                 icon = { IconInviteMore }
                 onClick = { this._onToolbarOpenInvite }
-                tooltip = { t('toolbar.invite') } />
+                tooltip = { t('toolbar.invite') } /> */}
             <ToolbarButton
                 accessibilityLabel =
                     { t('toolbar.accessibilityLabel.tile') }
