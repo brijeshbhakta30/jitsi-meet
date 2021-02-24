@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import type { Dispatch } from 'redux';
 
 import { createDeepLinkingPageEvent, sendAnalytics } from '../../analytics';
+import interfaceConfig from '../../base/config/interfaceConfig';
 import { isSupportedMobileBrowser } from '../../base/environment';
 import { translate } from '../../base/i18n';
 import { Platform } from '../../base/react';
@@ -13,8 +14,6 @@ import { openWebApp } from '../actions';
 import { _TNS } from '../constants';
 import { generateDeepLinkingURL } from '../functions';
 import { renderPromotionalFooter } from '../renderPromotionalFooter';
-
-declare var interfaceConfig: Object;
 
 /**
  * The namespace of the CSS styles of DeepLinkingMobilePage.
@@ -114,7 +113,7 @@ class DeepLinkingMobilePage extends Component<Props> {
 
         return (
             <div className = { _SNS }>
-                <div className = 'header'>
+                {/* <div className = 'header'>
                     {
                         HIDE_DEEP_LINKING_LOGO
                             ? null
@@ -122,7 +121,7 @@ class DeepLinkingMobilePage extends Component<Props> {
                                 className = 'logo'
                                 src = 'images/logo-deep-linking.png' />
                     }
-                </div>
+                </div> */}
                 <div className = { `${_SNS}__body` }>
                     {
                         SHOW_DEEP_LINKING_IMAGE
@@ -170,10 +169,6 @@ class DeepLinkingMobilePage extends Component<Props> {
                             </a>
                     }
                     { renderPromotionalFooter() }
-                    <DialInSummary
-                        className = 'deep-linking-dial-in'
-                        clickableNumbers = { true }
-                        room = { _room } />
                 </div>
             </div>
         );
