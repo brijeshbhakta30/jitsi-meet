@@ -4,6 +4,7 @@
     overflow: auto;
     position: relative;
     width: 100vw;
+    display: flex;
 
     .header {
         width: 100%;
@@ -49,7 +50,7 @@
 
     &__text,
     .deep-linking-dial-in  {
-        font-size: 1em;
+        font-size: 1.5em;
         line-height: em(29px, 21px);
         margin-bottom: 0.65em;
 

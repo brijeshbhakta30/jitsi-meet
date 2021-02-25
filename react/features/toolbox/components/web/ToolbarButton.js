@@ -22,7 +22,12 @@ type Props = AbstractToolbarButtonProps & {
      * From which direction the tooltip should appear, relative to the
      * button.
      */
-    tooltipPosition: string
+    tooltipPosition: string,
+
+    /**
+     * The class to be added to the wrapper component.
+     */
+    wrapperClass: string,
 };
 
 /**
@@ -88,7 +93,7 @@ class ToolbarButton extends AbstractToolbarButton<Props> {
             <div
                 aria-label={this.props.accessibilityLabel}
                 aria-pressed={this.props.toggled}
-                className='toolbox-button'
+                className={'toolbox-button ' + this.props.wrapperClass}
                 onClick={this.props.onClick}
                 onKeyDown={this._onKeyDown}
                 role='button'

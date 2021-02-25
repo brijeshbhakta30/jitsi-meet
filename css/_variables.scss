@@ -234,7 +234,7 @@ $deepLinkingMobileLogoHeight: 40px;
 $deepLinkingMobileHeaderBackground: #f1f2f5;
 
 $deepLinkingMobileLinkColor: inherit;
-$deepLinkingMobileTextFontSize: inherit;
+$deepLinkingMobileTextFontSize: 1.5em;
 $deepLinkingMobileTextLineHeight: inherit;
 
 $deepLinkingDialInConferenceIdMargin: 10px 0 10px 0;
@@ -254,18 +254,18 @@ $deepLinkingDialInConferenceDescriptionMarginBottom: none;
 $deepLinkingDialInConferencePinFontSize: inherit;
 $deepLinkingDialInConferencePinLineHeight: inherit;
 
-$depLinkingMobileHrefLineHeight: 2.2857142857142856em;
+$depLinkingMobileHrefLineHeight: 3.5em;
 $deepLinkingMobileHrefFontWeight: bolder;
 $deepLinkingMobileHrefFontSize: inherit;
 
-$deepLinkingMobileButtonHeight: 2.2857142857142856em;
-$deepLinkingMobileButtonLineHeight: 2.2857142857142856em;
+$deepLinkingMobileButtonHeight: 3.5em;
+$deepLinkingMobileButtonLineHeight: 3.5em;
 $deepLinkingMobileButtonMargin: 18px auto 10px;
 $deepLinkingMobileButtonWidth: auto;
 $deepLinkingMobileButtonFontWeight: bold;
 $deepLinkingMobileButtonFontSize: inherit;
 
-$primaryDeepLinkingMobileButtonBorderRadius: inherit;
+$primaryDeepLinkingMobileButtonBorderRadius: 5px;
 
 /**
 * Chrome extension banner variables.

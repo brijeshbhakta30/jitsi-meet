@@ -977,8 +977,8 @@ class Toolbox extends Component<Props, State> {
 
         return (
             <ToolbarButton
-                accessibilityLabel
-                ={t('toolbar.accessibilityLabel.shareYourScreen')}
+                accessibilityLabel={t('toolbar.accessibilityLabel.shareYourScreen')}
+                wrapperClass='hide-me-small'
                 disabled={!_desktopSharingEnabled}
                 icon={IconShareDesktop}
                 onClick={this._onToolbarToggleScreenshare}

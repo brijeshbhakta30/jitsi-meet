@@ -52,7 +52,7 @@ function InviteMore({
     return (
         _visible
             ? <div className = { `invite-more-container${_tileViewEnabled ? ' elevated' : ''}` }>
-                <div className = 'invite-more-header'>
+                <div className = 'invite-more-header hide-me-small'>
                     {t('addPeople.inviteMoreHeader')}
                 </div>
                 <div

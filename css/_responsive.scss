@@ -50,11 +50,16 @@
     }
 }
 @media only screen and (max-width: $smallScreen) {
+    .hide-me-small {
+        display: none !important;
+    }
     .watermark {
         width: 20%;
         height: 20%;
     }
-
+    .tile-icon-header.invite-icon-header {
+        right: 70px !important;
+    }
     .new-toolbox {
         .toolbox-content {
             .button-group-center,
@@ -62,18 +67,18 @@
             .button-group-right {
                 .toolbox-button {
                     .toolbox-icon {
-                        width: 36px;
-                        height: 36px;
+                        width: 36px !important;
+                        height: 36px !important;
                         svg {
-                            width: 20px;
-                            height: 20px;
+                            width: 20px !important;
+                            height: 20px !important;
                         }
                     }
 
                     .hangup-wrapper {
                         .toolbox-icon {
-                            width: 36px;
-                            height: 36px;
+                            width: 36px !important;
+                            height: 36px !important;
                         }
                     }
                 }
@@ -83,8 +88,14 @@
 }
 
 @media only screen and (max-width: $verySmallScreen) {
+    .hide-me-small {
+        display: none !important;
+    }
     #videoResolutionLabel {
         display: none;
+    }
+    .tile-icon-header.invite-icon-header {
+        right: 70px !important;
     }
     .desktop-browser {
         .vertical-filmstrip .filmstrip {
@@ -109,8 +120,8 @@
                 }
                 .toolbox-button {
                     .toolbox-icon {
-                        width: 36px;
-                        height: 36px;
+                        width: 36px !important;
+                        height: 36px !important;
                         svg {
                             width: 20px;
                             height: 20px;
@@ -119,8 +130,8 @@
 
                     .hangup-wrapper {
                         .toolbox-icon {
-                            width: 36px;
-                            height: 36px;
+                            width: 36px !important;
+                            height: 36px !important;
                         }
                     }
                 }
