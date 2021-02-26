@@ -1019,6 +1019,10 @@ class Toolbox extends Component<Props, State> {
      * @returns {boolean}
      */
     _isEmbedMeetingVisible() {
+        // Returning false without checking as we need to hide the embed meeting option
+        return false;
+
+        // eslint-disable-next-line no-unreachable
         return !this.props._isVpaasMeeting && this._shouldShowButton('embedmeeting');
     }
 
