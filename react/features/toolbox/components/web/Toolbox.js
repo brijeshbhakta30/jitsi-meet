@@ -367,7 +367,7 @@ class Toolbox extends Component<Props, State> {
      * @returns {void}
      */
     componentWillUnmount() {
-        ['A', 'C', 'D', 'R', 'S'].forEach(letter =>
+        [ 'A', 'C', 'D', 'R', 'S' ].forEach(letter =>
             APP.keyboardshortcut.unregisterShortcut(letter));
 
         window.removeEventListener('resize', this._onResize);
@@ -982,14 +982,13 @@ class Toolbox extends Component<Props, State> {
         if (isInOverflowMenu) {
             return (
                 <OverflowMenuItem
-                    accessibilityLabel
-                    ={t('toolbar.accessibilityLabel.shareYourScreen')}
-                    disabled={_desktopSharingEnabled}
-                    icon={IconShareDesktop}
-                    iconId='share-desktop'
-                    key='desktop'
-                    onClick={this._onToolbarToggleScreenshare}
-                    text={
+                    accessibilityLabel = { t('toolbar.accessibilityLabel.shareYourScreen') }
+                    disabled = { _desktopSharingEnabled }
+                    icon = { IconShareDesktop }
+                    iconId = 'share-desktop'
+                    key = 'desktop'
+                    onClick = { this._onToolbarToggleScreenshare }
+                    text = {
                         t(`toolbar.${_screensharing
                             ? 'stopScreenSharing' : 'startScreenSharing'}`
                         )
@@ -1003,13 +1002,12 @@ class Toolbox extends Component<Props, State> {
 
         return (
             <ToolbarButton
-                accessibilityLabel
-                ={t('toolbar.accessibilityLabel.shareYourScreen')}
-                disabled={!_desktopSharingEnabled}
-                icon={IconShareDesktop}
-                onClick={this._onToolbarToggleScreenshare}
-                toggled={_screensharing}
-                tooltip={tooltip} />
+                accessibilityLabel = { t('toolbar.accessibilityLabel.shareYourScreen') }
+                disabled = { !_desktopSharingEnabled }
+                icon = { IconShareDesktop }
+                onClick = { this._onToolbarToggleScreenshare }
+                toggled = { _screensharing }
+                tooltip = { tooltip } />
         );
     }
 
@@ -1019,6 +1017,10 @@ class Toolbox extends Component<Props, State> {
      * @returns {boolean}
      */
     _isEmbedMeetingVisible() {
+        // Returning false without checking as we need to hide the embed meeting option
+        return false;
+
+        // eslint-disable-next-line no-unreachable
         return !this.props._isVpaasMeeting && this._shouldShowButton('embedmeeting');
     }
 
@@ -1057,16 +1059,16 @@ class Toolbox extends Component<Props, State> {
                     onClick = { this._onToolbarOpenVideoQuality } />,
             this._shouldShowButton('fullscreen')
             && <OverflowMenuItem
-                accessibilityLabel={t('toolbar.accessibilityLabel.fullScreen')}
-                icon={_fullScreen ? IconExitFullScreen : IconFullScreen}
-                key='fullscreen'
-                onClick={this._onToolbarToggleFullScreen}
-                text={_fullScreen ? t('toolbar.exitFullScreen') : t('toolbar.enterFullScreen')} />,
+                accessibilityLabel = { t('toolbar.accessibilityLabel.fullScreen') }
+                icon = { _fullScreen ? IconExitFullScreen : IconFullScreen }
+                key = 'fullscreen'
+                onClick = { this._onToolbarToggleFullScreen }
+                text = { _fullScreen ? t('toolbar.exitFullScreen') : t('toolbar.enterFullScreen') } />,
             <LiveStreamButton
-                key='livestreaming'
-                showLabel={true} />,
-            <LekturRecordingButton key='lektur-recorder' />,
-            <LekturKickAllAndEndButton key='lektur-kick-all-end' />,
+                key = 'livestreaming'
+                showLabel = { true } />,
+            <LekturRecordingButton key = 'lektur-recorder' />,
+            <LekturKickAllAndEndButton key = 'lektur-kick-all-end' />,
             this._shouldShowButton('recording')
             && false && <RecordButton
                 key = 'record'
@@ -1309,7 +1311,7 @@ class Toolbox extends Component<Props, State> {
             // buttonsRight.push('invite');
         }
         if (this._shouldShowButton('security') || this._shouldShowButton('info')) {
-            // buttonsRight.push('security');
+            buttonsRight.push('security');
         }
 
         if (this._shouldShowButton('tileview')) {
@@ -1401,7 +1403,7 @@ class Toolbox extends Component<Props, State> {
                             onClick = { this._onToolbarOpenInvite }
                             tooltip = { t('toolbar.invite') } /> }
                     { buttonsRight.indexOf('security') !== -1
-                        && <SecurityDialogButton customClass = 'security-toolbar-button' /> }
+                        && <SecurityDialogButton /> }
                     { buttonsRight.indexOf('overflowmenu') !== -1
                         && <OverflowMenuButton
                             isOpen = { _overflowMenuVisible }
@@ -1470,6 +1472,7 @@ function _mapStateToProps(state) {
     // override them we'd miss it.
     const buttons = new Set(interfaceConfig.TOOLBAR_BUTTONS);
     const participants = getParticipants(state);
+
     return {
         _participants: participants,
         _chatOpen: state['features/chat'].isOpen,

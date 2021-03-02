@@ -91,6 +91,8 @@ export { default as IconRoomLock } from './security.svg';
 export { default as IconRoomUnlock } from './security-locked.svg';
 export { default as IconSecurityOff } from './security-off.svg';
 export { default as IconSecurityOn } from './security-on.svg';
+export { default as IconSecurityOffLektur } from './security-off-lektur.svg';
+export { default as IconSecurityOnLektur } from './security-on-lektur.svg';
 export { default as IconSearch } from './search.svg';
 export { default as IconSettings } from './settings.svg';
 export { default as IconSignalLevel0 } from './signal_cellular_0.svg';
